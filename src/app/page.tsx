@@ -1,10 +1,7 @@
-import Image from "next/image";
-import styles from "./page.module.css";
-
-export default function Home() {
+export default function Panel() {
   return (
     <div>
-      <div>hello</div>
+      <div>login</div>
     </div>
   );
 }
