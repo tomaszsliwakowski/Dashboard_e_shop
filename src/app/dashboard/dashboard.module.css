@@ -64,10 +64,104 @@
 .nav__el a span {
   font-size: 18px;
 }
+
 .nav__el a svg {
   font-size: 22px;
 }
 
 .dashboard {
   width: 100%;
+  height: 100%;
+  padding: 0.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+}
+.widget {
+  background: linear-gradient(180deg, #a2d2ff 0%, #4895ef 100%);
+  width: 100%;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 2rem;
+  padding: 0.5rem;
+}
+.widget__top {
+  display: flex;
+}
+.widget__icon {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.widget__icon span {
+  margin: 0.5rem 0;
+  border: 3px solid white;
+  box-shadow: 0 0 15px white;
+  border-radius: 50%;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.widget__icon span svg {
+  font-size: 35px;
+  color: white;
+}
+.widget__reasult {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.widget__reasult span {
+  position: relative;
+  top: 0.5rem;
+  padding-right: 1rem;
+  color: white;
+  font-weight: 500;
+  font-size: 28px;
+}
+.panel {
+  display: flex;
+  gap: 1rem;
+}
+.widget__bottom {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0;
+  padding: 0 1rem;
+  color: white;
+}
+.widget__bottom span {
+  font-weight: 600;
+}
+.widget__bottom span:nth-last-of-type(1) {
+  font-weight: 400;
+}
+
+@media screen and (max-width: 768px) {
+  .nav__el a span {
+    display: none;
+  }
+  .nav {
+    min-width: 60px;
+    max-width: 60px;
+  }
+  .nav__el {
+    padding-left: 22%;
+  }
+  .active {
+    border-left: 5px solid #4895ef;
+  }
+  .logo {
+    font-size: 18px;
+  }
+  .header {
+    height: 4rem;
+  }
+}
+@media screen and (max-width: 350px) {
+  .logo {
+    font-size: 14px;
+  }
 }

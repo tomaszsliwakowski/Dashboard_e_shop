@@ -1,6 +1,8 @@
+import styles from "../dashboard.module.css";
+
 export default function Products() {
   return (
-    <div>
+    <div className={styles.dashboard}>
       <div>produkty</div>
     </div>
   );
