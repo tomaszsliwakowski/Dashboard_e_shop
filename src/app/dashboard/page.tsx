@@ -1,60 +1,52 @@
+import Widget from "./_widget";
 import styles from "./dashboard.module.css";
-import { SlBasket } from "react-icons/sl";
+
+const tb = [
+  { id: 1, user: "John Stone", data: "09.05.2022", cash: 4500 },
+  { id: 1, user: "John Stone", data: "09.05.2022", cash: 4500 },
+  { id: 1, user: "John Stone", data: "09.05.2022", cash: 4500 },
+  { id: 1, user: "John Stoen", data: "09.05.2022", cash: 4500 },
+];
 
 export default function Dashboard() {
   return (
     <div className={styles.dashboard}>
       <div className={styles.panel}>
-        <div className={styles.widget}>
-          <div className={styles.widget__top}>
-            <div className={styles.widget__icon}>
-              <span>
-                <SlBasket />
-              </span>
-            </div>
-            <div className={styles.widget__reasult}>
-              <span>100</span>
-            </div>
-          </div>
-          <div className={styles.widget__bottom}>
-            <span>Zamówienia</span>
-            <span>Ostatnie 24H</span>
-          </div>
-        </div>
-        <div className={styles.widget}>
-          <div className={styles.widget__top}>
-            <div className={styles.widget__icon}>
-              <span>
-                <SlBasket />
-              </span>
-            </div>
-            <div className={styles.widget__reasult}>
-              <span>100</span>
-            </div>
-          </div>
-          <div className={styles.widget__bottom}>
-            <span>Zamówienia</span>
-            <span>Ostatnie 24H</span>
-          </div>
-        </div>
-        <div className={styles.widget}>
-          <div className={styles.widget__top}>
-            <div className={styles.widget__icon}>
-              <span>
-                <SlBasket />
-              </span>
-            </div>
-            <div className={styles.widget__reasult}>
-              <span>100</span>
-            </div>
-          </div>
-          <div className={styles.widget__bottom}>
-            <span>Zamówienia</span>
-            <span>Ostatnie 24H</span>
-          </div>
-        </div>
+        <Widget />
       </div>
-      <div className={styles.lastOrders}>last</div>
+      <div className={styles.lastOrders}>
+        <h2>Ostatnie zamówienia</h2>
+        <table className={styles.table}>
+          <thead>
+            <tr>
+              <th>ID</th>
+            </tr>
+            <tr>
+              <th>Klient</th>
+            </tr>
+            <tr>
+              <th>Data</th>
+            </tr>
+            <tr>
+              <th>Kwota</th>
+            </tr>
+            <tr>
+              <th>Więcej</th>
+            </tr>
+          </thead>
+          <tbody>
+            {tb.map((item, id) => (
+              <tr className={styles.row}>
+                <td>{item.id}</td>
+                <td>{item.user}</td>
+                <td>{item.data}</td>
+                <td>{item.cash}</td>
+                <td>Szczegóły</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
