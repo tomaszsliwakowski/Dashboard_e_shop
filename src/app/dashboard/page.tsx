@@ -16,36 +16,38 @@ export default function Dashboard() {
       </div>
       <div className={styles.lastOrders}>
         <h2>Ostatnie zamówienia</h2>
-        <table className={styles.table}>
-          <thead>
-            <tr>
-              <th>ID</th>
-            </tr>
-            <tr>
-              <th>Klient</th>
-            </tr>
-            <tr>
-              <th>Data</th>
-            </tr>
-            <tr>
-              <th>Kwota</th>
-            </tr>
-            <tr>
-              <th>Więcej</th>
-            </tr>
-          </thead>
-          <tbody>
-            {tb.map((item, id) => (
-              <tr className={styles.row}>
-                <td>{item.id}</td>
-                <td>{item.user}</td>
-                <td>{item.data}</td>
-                <td>{item.cash}</td>
-                <td>Szczegóły</td>
+        <div className={styles.Tableslider}>
+          <table className={styles.table}>
+            <thead>
+              <tr>
+                <th>ID</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+              <tr>
+                <th>Klient</th>
+              </tr>
+              <tr>
+                <th>Data</th>
+              </tr>
+              <tr>
+                <th>Kwota</th>
+              </tr>
+              <tr>
+                <th>Więcej</th>
+              </tr>
+            </thead>
+            <tbody>
+              {tb.map((item, id) => (
+                <tr className={styles.row}>
+                  <td>{item.id}</td>
+                  <td>{item.user}</td>
+                  <td>{item.data}</td>
+                  <td>{item.cash}</td>
+                  <td className={styles.GoToMore}>Szczegóły</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );

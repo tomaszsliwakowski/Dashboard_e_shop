@@ -4,6 +4,9 @@
   display: flex;
   flex-direction: column;
   background: linear-gradient(#d8eff3, #b1e0e9);
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+  overflow: hidden;
 }
 .header {
   display: flex;
@@ -149,7 +152,9 @@
   margin-bottom: 1rem;
 }
 .table {
-  width: 75%;
+  min-width: 65%;
+  max-width: 800px;
+  width: 100%;
   background-color: white;
   padding: 1rem 0;
   border-radius: 0.5rem;
@@ -167,7 +172,7 @@
   font-size: 20px;
 }
 .table tbody {
-  margin-top: 1rem;
+  margin-top: 2rem;
   margin-bottom: 0.5rem;
   display: flex;
   flex-direction: column;
@@ -183,10 +188,38 @@
   width: 100%;
   font-size: 18px;
 }
-@media screen and (max-width: 768px) {
+.GoToMore {
+  color: #4895ef;
+  cursor: pointer;
+}
+@media screen and (max-width: 1200px) {
+  .panel {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .nav {
+    max-width: 200px;
+  }
+  .table {
+    width: 100%;
+    max-width: 100%;
+  }
+  .dashboard {
+    padding: 0.5rem 2rem 0.5rem 0rem;
+  }
+}
+@media screen and (max-width: 1000px) {
   .nav__el a span {
     display: none;
   }
+  .row td {
+    font-size: 14px;
+  }
+  .table thead tr {
+    font-size: 16px;
+  }
+
   .nav {
     min-width: 60px;
     max-width: 60px;
@@ -205,8 +238,52 @@
     margin-bottom: 0.5;
   }
 }
+@media screen and (max-width: 768px) {
+  .table {
+    min-width: 600px;
+  }
+  .Tableslider {
+    overflow: auto;
+  }
+  .lastOrders {
+    max-width: 90%;
+    margin-bottom: 2rem;
+  }
+}
+@media screen and (max-width: 400px) {
+  .widget {
+    max-width: 250px;
+  }
+  .widget__bottom {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
 @media screen and (max-width: 350px) {
   .logo {
     font-size: 14px;
+  }
+  .header {
+    height: 3rem;
+    margin-bottom: 0;
+  }
+  .widget {
+    max-width: 180px;
+  }
+
+  .widget__top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .widget__reasult {
+    display: flex;
+    justify-content: center;
+  }
+  .widget__reasult span {
+    padding: 0;
   }
 }
