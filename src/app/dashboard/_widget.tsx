@@ -30,7 +30,7 @@ export default function Widget() {
             </span>
           </div>
           <div className={styles.widget__reasult}>
-            <span>1000$</span>
+            <span>1000zł</span>
           </div>
         </div>
         <div className={styles.widget__bottom}>
