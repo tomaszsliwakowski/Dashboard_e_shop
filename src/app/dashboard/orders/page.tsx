@@ -25,8 +25,18 @@ export default function Orders() {
   return (
     <div className={styles.dashboard}>
       <div className={styles.Orders}>
-        <h2>Zamówienia</h2>
-        <div className={styles.SortOrders}>Sort</div>
+        <h2>Zamówienia (8)</h2>
+        <div className={styles.SortOrders}>
+          <div className={styles.SortID}>
+            <input type="text" />
+            <button>S</button>
+          </div>
+          <div className={styles.SortCust}>
+            <input type="text" />
+            <button>S</button>
+          </div>
+          <div className={styles.SortData}>SELECT</div>
+        </div>
         <div className={`${styles.Tableslider} ${styles.OrdersSlider}`}>
           <table className={`${styles.table} ${styles.OrdersTable}`}>
             <thead>

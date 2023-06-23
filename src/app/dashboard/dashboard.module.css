@@ -229,6 +229,8 @@
   width: 90%;
   background-color: white;
   margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
 }
 @media screen and (max-width: 1200px) {
   .panel {
