@@ -37,7 +37,7 @@ export default function Dashboard() {
             </thead>
             <tbody>
               {tb.map((item, id) => (
-                <tr className={styles.row}>
+                <tr className={styles.row} key={id}>
                   <td>{item.id}</td>
                   <td>{item.user}</td>
                   <td>{item.data}</td>

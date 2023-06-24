@@ -225,12 +225,131 @@
   border-radius: 10px;
 }
 .SortOrders {
-  min-height: 100px;
+  min-height: 50px;
+  border-radius: 0.5rem;
   width: 90%;
   background-color: white;
   margin-bottom: 1rem;
   display: flex;
   align-items: center;
+}
+.SortID {
+  display: flex;
+  justify-content: center;
+  margin: 0 1rem;
+}
+.SortInput {
+  height: 30px;
+  border-radius: 10px 0 0 10px;
+  border: 1px solid silver;
+  border-right-color: #4895ef;
+  outline: none;
+  padding: 0 10px;
+}
+.SortBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  width: 35px;
+  max-height: 30px;
+  border-radius: 0 10px 10px 0;
+  border: 1px solid #4895ef;
+  background: #4895ef;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.SortBtn:hover {
+  border: 1px solid #1d70cf;
+  background: #1d70cf;
+}
+.SortBtn svg {
+  font-size: 18px;
+}
+
+.SortCust {
+  display: flex;
+  justify-self: center;
+  margin-left: 1rem;
+}
+.SortData {
+  margin-left: 2rem;
+  border: 1px solid silver;
+  border-radius: 1rem;
+  height: 30px;
+  width: 135px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 0 1.5rem 0 1rem;
+  background-color: white;
+}
+.SortData.open {
+  margin-left: 2rem;
+  border: 1px solid silver;
+  border-radius: 1rem 1rem 0rem 0rem;
+  height: 30px;
+  width: 135px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 0 1.5rem 0 1rem;
+  box-shadow: 0 0 5px silver;
+}
+.SortData input {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+  opacity: 0;
+  left: 0;
+  cursor: pointer;
+}
+.SortDataShow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  font-size: 16px;
+}
+
+.SortDataShow svg {
+  position: absolute;
+  right: 10px;
+  top: 7px;
+}
+.DataList {
+  position: absolute;
+  width: calc(100% + 2px);
+  height: fit-content;
+  background-color: white;
+  border: 1px solid silver;
+  box-shadow: 0 0 5px silver;
+  top: 28px;
+  border-radius: 0rem 0rem 1rem 1rem;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  left: -1px;
+}
+.DataList li {
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgb(228, 224, 224);
+  cursor: pointer;
+}
+.DataList li:hover {
+  background-color: rgb(228, 224, 224);
+}
+.DataList li:last-of-type {
+  border-bottom: none;
+  border-radius: 0 0 1rem 1rem;
 }
 @media screen and (max-width: 1200px) {
   .panel {
