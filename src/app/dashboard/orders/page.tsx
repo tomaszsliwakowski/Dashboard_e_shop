@@ -29,10 +29,10 @@ const sortOpt = ["Cały czas", "24h", "7dni", "30dni", "365dni"];
 
 export default function Orders() {
   const [openSort, setOpenSort] = useState<boolean>(false);
-  const [sortOptValue, setSortOptValue] = useState("Cały czas");
+  const [sortOptValue, setSortOptValue] = useState(0);
 
-  const HandleSortOpt = (item: string) => {
-    setSortOptValue(item);
+  const HandleSortOpt = (num: number) => {
+    setSortOptValue(num);
     setOpenSort(false);
   };
 
@@ -78,7 +78,7 @@ export default function Orders() {
             className={`${styles.SortData} ${openSort ? styles.open : null}`}
           >
             <span className={styles.SortDataShow}>
-              <span>{sortOptValue}</span>
+              <span>{sortOpt[sortOptValue]}</span>
               {openSort ? <AiFillCaretUp /> : <AiFillCaretDown />}
             </span>
             <input
@@ -90,7 +90,7 @@ export default function Orders() {
             {openSort ? (
               <ul className={styles.DataList}>
                 {sortOpt.map((item, id) => (
-                  <li key={id} id="sort" onClick={() => HandleSortOpt(item)}>
+                  <li key={id} id="sort" onClick={() => HandleSortOpt(id)}>
                     {item}
                   </li>
                 ))}
