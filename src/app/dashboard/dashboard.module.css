@@ -351,6 +351,126 @@
   border-bottom: none;
   border-radius: 0 0 1rem 1rem;
 }
+
+.sale {
+  width: 100%;
+  height: 100%;
+}
+.sale h2 {
+  border-bottom: 2px solid white;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+.saleContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+.activeSale {
+  padding: 0.5rem;
+  width: 100%;
+  max-width: 450px;
+  background-color: white;
+  border-radius: 1rem;
+  margin-right: 2rem;
+}
+.saleATitle {
+  font-size: 18px;
+  font-weight: 600;
+}
+.queue {
+  width: 100%;
+  background-color: white;
+}
+.queueList {
+  list-style-type: none;
+}
+.saleProduct {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+}
+.saleProduct img {
+  width: fit-content;
+  height: 100%;
+  max-height: 250px;
+  margin: 1rem 0 1rem 0;
+}
+
+.saleProduct__price {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+.saleProduct__price div {
+  display: flex;
+  gap: 3px;
+}
+.saleProduct__price div span:last-of-type {
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: 1px;
+}
+.saleProduct__price div span {
+  font-size: 17px;
+}
+.saleProduct__name {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+.saleProduct__time {
+  margin-top: 0.5rem;
+  margin-bottom: 2rem;
+  display: flex;
+}
+.saleProduct__btns {
+  margin-bottom: 1rem;
+  display: flex;
+  gap: 1rem;
+}
+.saleProduct__btns button {
+  width: fit-content;
+  padding: 8px 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+}
+.saleProduct__btns button:first-of-type {
+  background-color: #4895ef;
+  color: white;
+  font-weight: bold;
+}
+.saleProduct__btns button:last-of-type {
+  background-color: red;
+  color: white;
+  font-weight: bold;
+}
+.time__reasult {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.time__reasult span:first-of-type {
+  font-size: 28px;
+  font-weight: 400;
+  padding: 2px 5px;
+  border-radius: 5px;
+  background-color: rgb(214, 211, 211);
+}
+.time__reasult span:last-of-type {
+  font-size: 12px;
+}
+.time__dot {
+  font-size: 28px;
+  font-weight: 400;
+  margin: 0 5px;
+}
 @media screen and (max-width: 1200px) {
   .panel {
     display: flex;
