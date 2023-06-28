@@ -120,10 +120,104 @@ export default function Sale() {
           <div className={styles.queue}>
             <div className={styles.addQueue}>
               <span>Kolejka</span>
-              <button>dodaj do kolejki</button>
+              <button>Dodaj</button>
             </div>
             <ul className={styles.queueList}>
-              <li>produkt w kolejce</li>
+              <li>
+                <img src={prod.img} alt="" />
+                <div className={styles.queueListEl__body}>
+                  <span className={styles.queueListEl__name}>{prod.name}</span>
+                  <div className={styles.queueListEl__price}>
+                    <div>
+                      Cena: <span>{prod.price}zł</span>
+                    </div>
+                    <div>
+                      Cena: <span>{prod.oldprice}zł</span>
+                    </div>
+                  </div>
+                  <div className={styles.queueListEl__btns}>
+                    <button>Edytuj</button>
+                    <button>Usuń</button>
+                  </div>
+                </div>
+                <span className={styles.queueNum}>1</span>
+              </li>
+              <li>
+                <img src={prod.img} alt="" />
+                <div className={styles.queueListEl__body}>
+                  <span className={styles.queueListEl__name}>{prod.name}</span>
+                  <div className={styles.queueListEl__price}>
+                    <div>
+                      Cena: <span>{prod.price}zł</span>
+                    </div>
+                    <div>
+                      Cena: <span>{prod.oldprice}zł</span>
+                    </div>
+                  </div>
+                  <div className={styles.queueListEl__btns}>
+                    <button>Edytuj</button>
+                    <button>Usuń</button>
+                  </div>
+                </div>
+                <span className={styles.queueNum}>2</span>
+              </li>
+              <li>
+                <img src={prod.img} alt="" />
+                <div className={styles.queueListEl__body}>
+                  <span className={styles.queueListEl__name}>{prod.name}</span>
+                  <div className={styles.queueListEl__price}>
+                    <div>
+                      Cena: <span>{prod.price}zł</span>
+                    </div>
+                    <div>
+                      Cena: <span>{prod.oldprice}zł</span>
+                    </div>
+                  </div>
+                  <div className={styles.queueListEl__btns}>
+                    <button>Edytuj</button>
+                    <button>Usuń</button>
+                  </div>
+                </div>
+                <span className={styles.queueNum}>3</span>
+              </li>
+              <li>
+                <img src={prod.img} alt="" />
+                <div className={styles.queueListEl__body}>
+                  <span className={styles.queueListEl__name}>{prod.name}</span>
+                  <div className={styles.queueListEl__price}>
+                    <div>
+                      Cena: <span>{prod.price}zł</span>
+                    </div>
+                    <div>
+                      Cena: <span>{prod.oldprice}zł</span>
+                    </div>
+                  </div>
+                  <div className={styles.queueListEl__btns}>
+                    <button>Edytuj</button>
+                    <button>Usuń</button>
+                  </div>
+                </div>
+                <span className={styles.queueNum}>4</span>
+              </li>
+              <li>
+                <img src={prod.img} alt="" />
+                <div className={styles.queueListEl__body}>
+                  <span className={styles.queueListEl__name}>{prod.name}</span>
+                  <div className={styles.queueListEl__price}>
+                    <div>
+                      Cena: <span>{prod.price}zł</span>
+                    </div>
+                    <div>
+                      Cena: <span>{prod.oldprice}zł</span>
+                    </div>
+                  </div>
+                  <div className={styles.queueListEl__btns}>
+                    <button>Edytuj</button>
+                    <button>Usuń</button>
+                  </div>
+                </div>
+                <span className={styles.queueNum}>5</span>
+              </li>
             </ul>
           </div>
         </div>

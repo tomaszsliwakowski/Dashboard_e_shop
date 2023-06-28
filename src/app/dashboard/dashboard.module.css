@@ -381,10 +381,12 @@
 .queue {
   width: 100%;
   background-color: white;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
-.queueList {
-  list-style-type: none;
-}
+
 .saleProduct {
   display: flex;
   flex-direction: column;
@@ -471,6 +473,123 @@
   font-weight: 400;
   margin: 0 5px;
 }
+
+.addQueue {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  gap: 1rem;
+  padding: 0.5rem 0 0 0;
+}
+.addQueue span {
+  padding-left: 1rem;
+  font-size: 18px;
+  font-weight: 600;
+}
+.addQueue button {
+  width: fit-content;
+  padding: 5px 1rem;
+  color: white;
+  font-weight: bold;
+  background-color: #4895ef;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+.queueList {
+  list-style-type: none;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  max-height: 520px;
+  display: flex;
+  padding: 0.5rem 1rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
+}
+.queueList::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.queueList::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+.queueList::-webkit-scrollbar-thumb {
+  background: #4895ef;
+  border-radius: 10px;
+}
+.queueList li {
+  display: flex;
+  width: fit-content;
+  flex-direction: column;
+  width: 100%;
+  height: fit-content;
+  padding: 1rem 0.5rem;
+  border-radius: 0.8rem;
+  max-width: 250px;
+  align-items: center;
+  border: 1px solid silver;
+  position: relative;
+}
+.queueList li img {
+  width: fit-content;
+  max-height: 100px;
+  margin-bottom: 0.5rem;
+}
+.queueListEl__body {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+.queueListEl__price {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.queueListEl__price div span {
+  font-weight: 500;
+}
+.queueListEl__price div:last-of-type {
+  text-decoration: line-through;
+}
+.queueListEl__name {
+  width: 100%;
+  overflow: hidden;
+  word-wrap: break-word;
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 0.2rem;
+}
+.queueListEl__body button {
+  margin: 0.7rem 0 0 0;
+  width: fit-content;
+  padding: 2px 1rem;
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+}
+.queueListEl__body button:first-of-type {
+  background-color: #4895ef;
+  margin-right: 1rem;
+}
+.queueNum {
+  position: absolute;
+  left: 12px;
+  top: 8px;
+  font-size: 16px;
+  font-weight: 500;
+}
 @media screen and (max-width: 1200px) {
   .panel {
     display: flex;
@@ -492,6 +611,12 @@
   }
   .SortOrders {
     margin-left: 2rem;
+  }
+  .sale {
+    margin-left: 2rem;
+  }
+  .queueList {
+    justify-content: center;
   }
 }
 @media screen and (max-width: 1000px) {
@@ -540,6 +665,18 @@
   .SortOrders {
     margin-left: 1rem;
   }
+  .saleContainer {
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+  .activeSale {
+    margin-right: 0;
+  }
+  .sale {
+    margin-left: 1rem;
+  }
 }
 @media screen and (max-width: 400px) {
   .widget {
@@ -562,6 +699,49 @@
   }
   .widget {
     max-width: 180px;
+  }
+  .saleProduct__btns {
+    flex-direction: column;
+  }
+  .saleProduct img {
+    width: 100px;
+  }
+  .sale {
+    margin-left: 1rem;
+  }
+  .queueListEl__btns {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .queueListEl__body button:first-of-type {
+    margin-right: 0;
+  }
+  .saleProduct__name {
+    font-size: 14px;
+    text-align: center;
+  }
+  .saleProduct__price span:first-of-type {
+    font-size: 12px;
+  }
+  .saleProduct__price span:last-of-type {
+    display: flex;
+    align-items: center;
+  }
+  .time__reasult span:first-of-type {
+    font-size: 24px;
+  }
+  .time__reasult span:last-of-type {
+    font-size: 10px;
+  }
+  .saleProduct__btns button {
+    font-size: 10px;
+  }
+  .saleProduct__btns {
+    gap: 0.5rem;
+  }
+  .saleProduct__time {
+    margin-bottom: 1rem;
   }
 
   .widget__top {
