@@ -23,7 +23,7 @@ export default function Dashboardlayout({
   return (
     <div className={styles.page}>
       <div className={styles.header}>
-        <span className={styles.logo}>Shop Dashboard</span>
+        <span className={styles.logo}>Shop Panel</span>
         <div>user</div>
       </div>
       <div className={styles.body}>
