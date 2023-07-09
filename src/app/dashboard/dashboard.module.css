@@ -365,6 +365,8 @@
   width: 100%;
   height: 100%;
   display: flex;
+  position: relative;
+  min-height: 560px;
 }
 .activeSale {
   padding: 0.5rem;
@@ -380,17 +382,18 @@
 }
 .queue {
   width: 100%;
-  background-color: white;
+  background-color: transparent;
   border-radius: 1rem;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
 }
 
 .saleProduct {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+  height: 100%;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
@@ -412,6 +415,7 @@
   display: flex;
   gap: 3px;
 }
+
 .saleProduct__price div span:last-of-type {
   font-weight: 600;
   font-size: 18px;
@@ -479,7 +483,10 @@
   display: flex;
   justify-content: flex-start;
   gap: 1rem;
-  padding: 0.5rem 0 0 0;
+  padding: 0.5rem 0 0.5rem 0;
+  background-color: white;
+  margin-bottom: 0.5rem;
+  border-radius: 1rem;
 }
 .addQueue span {
   padding-left: 1rem;
@@ -504,12 +511,14 @@
   width: 100%;
   height: 100%;
   overflow: auto;
-  max-height: 520px;
+  max-height: 525px;
   display: flex;
-  padding: 0.5rem 1rem;
+  padding: 1rem 1rem;
   gap: 1rem;
   flex-wrap: wrap;
   margin-bottom: 0.5rem;
+  background-color: white;
+  border-radius: 1rem;
 }
 .queueList::-webkit-scrollbar {
   width: 6px;
@@ -534,7 +543,7 @@
   border-radius: 0.8rem;
   max-width: 250px;
   align-items: center;
-  border: 1px solid silver;
+  border: 1px solid rgb(221, 221, 221);
   position: relative;
 }
 .queueList li img {
@@ -553,6 +562,9 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
+}
+.queueListEl__priceAdd div span {
+  font-weight: 500;
 }
 .queueListEl__price div span {
   font-weight: 500;
@@ -583,6 +595,10 @@
   background-color: #4895ef;
   margin-right: 1rem;
 }
+.queueListEl__btnsAdd button:first-of-type {
+  margin-right: 0;
+}
+
 .queueNum {
   position: absolute;
   left: 12px;
@@ -590,6 +606,180 @@
   font-size: 16px;
   font-weight: 500;
 }
+.saleProduct__panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+.saleProduct__panelOne {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.saleProduct__panelOne span {
+  font-size: 18px;
+  letter-spacing: 0.5px;
+}
+.saleProduct__panelOne div:first-of-type span:last-of-type {
+  font-weight: 500;
+}
+.saleProduct__panelTwo {
+  display: flex;
+  letter-spacing: 0.5px;
+}
+.saleProduct__priceAdd span:last-of-type {
+  font-weight: 500;
+}
+.saleProduct__panelTwo span {
+  font-size: 18px;
+  display: flex;
+}
+.saleProduct__priceAdd {
+  display: flex;
+}
+.saleProduct__priceAdd input {
+  margin-left: 0.5rem;
+  margin-right: 0.2rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  padding: 2px 10px;
+  font-size: 16px;
+  width: 80px;
+  border: 1px solid rgb(214, 211, 211);
+  outline: none;
+}
+.saleProduct__panelTwo input {
+  margin-left: 0.5rem;
+  margin-right: 0.2rem;
+  border-radius: 0.5rem;
+  padding: 2px 10px;
+  font-size: 16px;
+  width: 80px;
+  border: 1px solid rgb(214, 211, 211);
+  outline: none;
+}
+.AddIcon {
+  position: absolute;
+  top: 45%;
+  transform: translateY(-50%);
+  font-size: 50px;
+  color: #b1e0e9;
+  font-weight: bold;
+}
+
+.queueEdit {
+  position: absolute;
+  background-color: white;
+  border: 1px solid rgb(214, 211, 211);
+  border-radius: 0.5rem;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+.queueEdit span {
+  font-weight: 500;
+  font-size: 18px;
+}
+.queueEdit div {
+  display: flex;
+  gap: 1rem;
+}
+.queueEdit button {
+  font-size: 14px;
+  padding: 4px 15px;
+  border-radius: 0.5rem;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+.queueEdit input {
+  height: 30px;
+  width: 50%;
+  border-radius: 0.5rem;
+  outline: none;
+  border: 1px solid rgb(214, 211, 211);
+  text-align: center;
+  padding: 0 0.5rem;
+  font-size: 18px;
+}
+.queueEdit input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.queueEdit input[type="number"] {
+  -moz-appearance: textfield;
+}
+.queueEdit button:first-of-type {
+  background-color: #4895ef;
+}
+.queueEdit button:last-of-type {
+  background-color: red;
+}
+
+.queueEditMain {
+  position: absolute;
+  background-color: white;
+  border-radius: 0.5rem;
+  width: 100%;
+  height: 95%;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+.queueEditMain span {
+  font-weight: 500;
+  font-size: 18px;
+}
+.queueEditMain div {
+  display: flex;
+  gap: 1rem;
+}
+.queueEditMain button {
+  font-size: 14px;
+  padding: 4px 15px;
+  border-radius: 0.5rem;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+.queueEditMain input {
+  height: 30px;
+  width: 50%;
+  border-radius: 0.5rem;
+  outline: none;
+  border: 1px solid rgb(214, 211, 211);
+  text-align: center;
+  padding: 0 0.5rem;
+  font-size: 18px;
+}
+.queueEditMain input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.queueEditMain input[type="number"] {
+  -moz-appearance: textfield;
+}
+.queueEditMain button:first-of-type {
+  background-color: #4895ef;
+}
+.queueEditMain button:last-of-type {
+  background-color: red;
+}
+
 @media screen and (max-width: 1200px) {
   .panel {
     display: flex;
@@ -649,6 +839,9 @@
   }
 }
 @media screen and (max-width: 768px) {
+  .queueEditMain {
+    height: 100%;
+  }
   .table {
     min-width: 600px;
   }
@@ -671,6 +864,7 @@
     align-items: center;
     margin-bottom: 2rem;
   }
+
   .activeSale {
     margin-right: 0;
   }
@@ -690,6 +884,23 @@
   }
 }
 @media screen and (max-width: 350px) {
+  .saleProduct__panelOne span {
+    font-size: 14px;
+  }
+  .saleProduct__priceAdd span {
+    font-size: 12px;
+  }
+  .saleProduct__panelTwo span {
+    font-size: 12px;
+  }
+
+  .saleProduct__priceAdd input {
+    font-size: 14px;
+  }
+  .saleProduct__panelTwo input {
+    font-size: 14px;
+  }
+
   .logo {
     font-size: 14px;
   }
