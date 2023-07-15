@@ -1,6 +1,6 @@
 "use client";
 import { TimerType } from "@/types/type";
-import styles from "../dashboard.module.css";
+import styles from "../../PageStyle.module.css";
 import { AiOutlinePlus } from "react-icons/ai";
 
 type props = {

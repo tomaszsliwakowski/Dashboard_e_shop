@@ -1,5 +1,5 @@
 import Widget from "./_widget";
-import styles from "./dashboard.module.css";
+import styles from "../PageStyle.module.css";
 
 const tb = [
   { id: 1, user: "John Stone", data: "09.05.2022", cash: 4500 },

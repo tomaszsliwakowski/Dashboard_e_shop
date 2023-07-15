@@ -1,11 +1,12 @@
 "use client";
 import Link from "next/link";
-import styles from "./dashboard.module.css";
+import styles from "../PageStyle.module.css";
 import { RxDashboard } from "react-icons/rx";
 import { LuClipboardList } from "react-icons/lu";
 import { BsTags } from "react-icons/bs";
 import { MdOutlineInventory2 } from "react-icons/md";
 import { usePathname } from "next/navigation";
+import { ImExit } from "react-icons/im";
 
 const route = {
   dashboard: "/dashboard",
@@ -24,7 +25,10 @@ export default function Dashboardlayout({
     <div className={styles.page}>
       <div className={styles.header}>
         <span className={styles.logo}>Shop Panel</span>
-        <div>user</div>
+        <div>
+          <span>Admin</span>
+          <ImExit />
+        </div>
       </div>
       <div className={styles.body}>
         <div className={styles.nav}>

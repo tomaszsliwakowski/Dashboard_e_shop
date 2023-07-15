@@ -1,5 +1,5 @@
 "use client";
-import styles from "../dashboard.module.css";
+import styles from "../../PageStyle.module.css";
 import { BiSearch } from "react-icons/bi";
 import { AiFillCaretUp, AiFillCaretDown } from "react-icons/ai";
 import { useEffect, useState } from "react";

@@ -1,6 +1,6 @@
 "use client";
 import { AiOutlinePlus } from "react-icons/ai";
-import styles from "../dashboard.module.css";
+import styles from "../../PageStyle.module.css";
 import { useState } from "react";
 
 type props = {

@@ -1,4 +1,4 @@
-import styles from "./dashboard.module.css";
+import styles from "../PageStyle.module.css";
 import { SlBasket } from "react-icons/sl";
 import { MdAttachMoney } from "react-icons/md";
 import { BiUser } from "react-icons/bi";
