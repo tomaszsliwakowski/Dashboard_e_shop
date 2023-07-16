@@ -957,7 +957,7 @@
   width: 100%;
 }
 .loginUser span {
-  font-size: 20px;
+  font-size: 18px;
   margin-bottom: 5px;
 }
 .loginUser input {
@@ -978,7 +978,7 @@
   padding: 0 1rem;
 }
 .loginPasswd span {
-  font-size: 20px;
+  font-size: 18px;
   margin-bottom: 5px;
 }
 .loginMain h1 {
@@ -988,6 +988,15 @@
   color: white;
   text-shadow: 1px 2px 3px black;
   letter-spacing: 3px;
+}
+
+.username {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+}
+.username::first-letter {
+  text-transform: uppercase;
 }
 @media screen and (max-width: 1200px) {
   .panel {

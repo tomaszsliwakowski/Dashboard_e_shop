@@ -7,6 +7,11 @@ import { BsTags } from "react-icons/bs";
 import { MdOutlineInventory2 } from "react-icons/md";
 import { usePathname } from "next/navigation";
 import { ImExit } from "react-icons/im";
+import { useState, useEffect } from "react";
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import { auth } from "../../../firebase/config";
+import { useRouter } from "next/navigation";
+import { HiOutlineUserCircle } from "react-icons/hi";
 
 const route = {
   dashboard: "/dashboard",
@@ -20,14 +25,24 @@ export default function Dashboardlayout({
 }: {
   children: React.ReactNode;
 }) {
+  const { push } = useRouter();
+  const [user, setuser] = useState<string | undefined>(undefined);
   const pathname = usePathname();
+  useEffect(() => {
+    onAuthStateChanged(auth, (currentUser) => {
+      setuser(currentUser?.email?.split("@")[0]);
+    });
+  }, []);
+  const logout = async () => {
+    await signOut(auth).then(() => push("/"));
+  };
   return (
     <div className={styles.page}>
       <div className={styles.header}>
         <span className={styles.logo}>Shop Panel</span>
         <div>
-          <span>Admin</span>
-          <ImExit />
+          {user ? <span className={styles.username}>{user}</span> : null}
+          <ImExit onClick={logout} />
         </div>
       </div>
       <div className={styles.body}>

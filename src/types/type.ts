@@ -3,3 +3,8 @@ export type TimerType = {
   minutes: number;
   hour: number;
 };
+
+export type LoginType = {
+  email: string;
+  password: string;
+};
