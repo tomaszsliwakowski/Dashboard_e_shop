@@ -51,7 +51,7 @@ export default function Widget() {
         </div>
         <div className={styles.widget__bottom}>
           <span>Klienci</span>
-          <span>Ostatnie 24H</span>
+          <span>Od początku</span>
         </div>
       </div>
     </>

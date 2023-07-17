@@ -998,6 +998,13 @@
 .username::first-letter {
   text-transform: uppercase;
 }
+.Loader {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translateY(-50%);
+  transform: translateX(-50%);
+}
 @media screen and (max-width: 1200px) {
   .panel {
     display: flex;

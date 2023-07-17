@@ -11,7 +11,6 @@ import { useState, useEffect } from "react";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../../../firebase/config";
 import { useRouter } from "next/navigation";
-import { HiOutlineUserCircle } from "react-icons/hi";
 
 const route = {
   dashboard: "/dashboard",
