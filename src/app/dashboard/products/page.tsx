@@ -3,6 +3,8 @@ import styles from "../../PageStyle.module.css";
 import { BiSearch } from "react-icons/bi";
 import { useEffect, useState } from "react";
 import { AiFillCaretUp, AiFillCaretDown } from "react-icons/ai";
+import axios from "axios";
+import { PRODUCT } from "@/types/type";
 const prod = {
   img: "https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2022/9/pr_2022_9_9_10_29_57_140_02.jpg",
   name: "Apple iPhone 14 128GB Starlight",
@@ -21,6 +23,9 @@ const sortOpt = [
 export default function Products() {
   const [openSort, setOpenSort] = useState<boolean>(false);
   const [sortOptValue, setSortOptValue] = useState(0);
+  const [Product, setProduct] = useState<{ products: PRODUCT[] } | undefined>(
+    undefined
+  );
   const HandleSortOpt = (num: number) => {
     setSortOptValue(num);
     setOpenSort(false);
@@ -38,6 +43,13 @@ export default function Products() {
       document.body.removeEventListener("click", close);
     };
   }, []);
+
+  useEffect(() => {
+    axios.get("http://localhost:8080/api/product").then((reasult) => {
+      setProduct(reasult.data["Product"][0]);
+    });
+  }, []);
+  console.log(Product?.products);
   return (
     <div className={styles.dashboard}>
       <div className={styles.products}>
@@ -79,231 +91,27 @@ export default function Products() {
         </div>
         <div className={styles.products__show}>
           <ul className={styles.products__list}>
-            <li>
-              <img src={prod.img} alt="" />
-              <div className={styles.productsListEl__body}>
-                <span className={styles.productsListEl__name}>{prod.name}</span>
-                <div className={styles.productsListEl__price}>
-                  <div>
-                    Cena: <span>{prod.price}zł</span>
-                  </div>
-                </div>
-                <div className={styles.productsListEl__btns}>
-                  <button>Edytuj</button>
-                  <button>Usuń</button>
-                </div>
-              </div>
-            </li>
-            <li>
-              <img src={prod.img} alt="" />
-              <div className={styles.productsListEl__body}>
-                <span className={styles.productsListEl__name}>{prod.name}</span>
-                <div className={styles.productsListEl__price}>
-                  <div>
-                    Cena: <span>{prod.price}zł</span>
-                  </div>
-                </div>
-                <div className={styles.productsListEl__btns}>
-                  <button>Edytuj</button>
-                  <button>Usuń</button>
-                </div>
-              </div>
-            </li>
-            <li>
-              <img src={prod.img} alt="" />
-              <div className={styles.productsListEl__body}>
-                <span className={styles.productsListEl__name}>{prod.name}</span>
-                <div className={styles.productsListEl__price}>
-                  <div>
-                    Cena: <span>{prod.price}zł</span>
-                  </div>
-                </div>
-                <div className={styles.productsListEl__btns}>
-                  <button>Edytuj</button>
-                  <button>Usuń</button>
-                </div>
-              </div>
-            </li>
-            <li>
-              <img src={prod.img} alt="" />
-              <div className={styles.productsListEl__body}>
-                <span className={styles.productsListEl__name}>{prod.name}</span>
-                <div className={styles.productsListEl__price}>
-                  <div>
-                    Cena: <span>{prod.price}zł</span>
-                  </div>
-                </div>
-                <div className={styles.productsListEl__btns}>
-                  <button>Edytuj</button>
-                  <button>Usuń</button>
-                </div>
-              </div>
-            </li>
-            <li>
-              <img src={prod.img} alt="" />
-              <div className={styles.productsListEl__body}>
-                <span className={styles.productsListEl__name}>{prod.name}</span>
-                <div className={styles.productsListEl__price}>
-                  <div>
-                    Cena: <span>{prod.price}zł</span>
-                  </div>
-                </div>
-                <div className={styles.productsListEl__btns}>
-                  <button>Edytuj</button>
-                  <button>Usuń</button>
-                </div>
-              </div>
-            </li>
-            <li>
-              <img src={prod.img} alt="" />
-              <div className={styles.productsListEl__body}>
-                <span className={styles.productsListEl__name}>{prod.name}</span>
-                <div className={styles.productsListEl__price}>
-                  <div>
-                    Cena: <span>{prod.price}zł</span>
-                  </div>
-                </div>
-                <div className={styles.productsListEl__btns}>
-                  <button>Edytuj</button>
-                  <button>Usuń</button>
-                </div>
-              </div>
-            </li>
-            <li>
-              <img src={prod.img} alt="" />
-              <div className={styles.productsListEl__body}>
-                <span className={styles.productsListEl__name}>{prod.name}</span>
-                <div className={styles.productsListEl__price}>
-                  <div>
-                    Cena: <span>{prod.price}zł</span>
-                  </div>
-                </div>
-                <div className={styles.productsListEl__btns}>
-                  <button>Edytuj</button>
-                  <button>Usuń</button>
-                </div>
-              </div>
-            </li>
-            <li>
-              <img src={prod.img} alt="" />
-              <div className={styles.productsListEl__body}>
-                <span className={styles.productsListEl__name}>{prod.name}</span>
-                <div className={styles.productsListEl__price}>
-                  <div>
-                    Cena: <span>{prod.price}zł</span>
-                  </div>
-                </div>
-                <div className={styles.productsListEl__btns}>
-                  <button>Edytuj</button>
-                  <button>Usuń</button>
-                </div>
-              </div>
-            </li>
-            <li>
-              <img src={prod.img} alt="" />
-              <div className={styles.productsListEl__body}>
-                <span className={styles.productsListEl__name}>{prod.name}</span>
-                <div className={styles.productsListEl__price}>
-                  <div>
-                    Cena: <span>{prod.price}zł</span>
-                  </div>
-                </div>
-                <div className={styles.productsListEl__btns}>
-                  <button>Edytuj</button>
-                  <button>Usuń</button>
-                </div>
-              </div>
-            </li>
-            <li>
-              <img src={prod.img} alt="" />
-              <div className={styles.productsListEl__body}>
-                <span className={styles.productsListEl__name}>{prod.name}</span>
-                <div className={styles.productsListEl__price}>
-                  <div>
-                    Cena: <span>{prod.price}zł</span>
-                  </div>
-                </div>
-                <div className={styles.productsListEl__btns}>
-                  <button>Edytuj</button>
-                  <button>Usuń</button>
-                </div>
-              </div>
-            </li>
-            <li>
-              <img src={prod.img} alt="" />
-              <div className={styles.productsListEl__body}>
-                <span className={styles.productsListEl__name}>{prod.name}</span>
-                <div className={styles.productsListEl__price}>
-                  <div>
-                    Cena: <span>{prod.price}zł</span>
-                  </div>
-                </div>
-                <div className={styles.productsListEl__btns}>
-                  <button>Edytuj</button>
-                  <button>Usuń</button>
-                </div>
-              </div>
-            </li>
-            <li>
-              <img src={prod.img} alt="" />
-              <div className={styles.productsListEl__body}>
-                <span className={styles.productsListEl__name}>{prod.name}</span>
-                <div className={styles.productsListEl__price}>
-                  <div>
-                    Cena: <span>{prod.price}zł</span>
-                  </div>
-                </div>
-                <div className={styles.productsListEl__btns}>
-                  <button>Edytuj</button>
-                  <button>Usuń</button>
-                </div>
-              </div>
-            </li>
-            <li>
-              <img src={prod.img} alt="" />
-              <div className={styles.productsListEl__body}>
-                <span className={styles.productsListEl__name}>{prod.name}</span>
-                <div className={styles.productsListEl__price}>
-                  <div>
-                    Cena: <span>{prod.price}zł</span>
-                  </div>
-                </div>
-                <div className={styles.productsListEl__btns}>
-                  <button>Edytuj</button>
-                  <button>Usuń</button>
-                </div>
-              </div>
-            </li>
-            <li>
-              <img src={prod.img} alt="" />
-              <div className={styles.productsListEl__body}>
-                <span className={styles.productsListEl__name}>{prod.name}</span>
-                <div className={styles.productsListEl__price}>
-                  <div>
-                    Cena: <span>{prod.price}zł</span>
-                  </div>
-                </div>
-                <div className={styles.productsListEl__btns}>
-                  <button>Edytuj</button>
-                  <button>Usuń</button>
-                </div>
-              </div>
-            </li>
-            <li>
-              <img src={prod.img} alt="" />
-              <div className={styles.productsListEl__body}>
-                <span className={styles.productsListEl__name}>{prod.name}</span>
-                <div className={styles.productsListEl__price}>
-                  <div>
-                    Cena: <span>{prod.price}zł</span>
-                  </div>
-                </div>
-                <div className={styles.productsListEl__btns}>
-                  <button>Edytuj</button>
-                  <button>Usuń</button>
-                </div>
-              </div>
-            </li>
+            {Product
+              ? Product.products.map((item: PRODUCT, id: number) => (
+                  <li key={id}>
+                    <img src={item.img} alt={item.category} />
+                    <div className={styles.productsListEl__body}>
+                      <span className={styles.productsListEl__name}>
+                        {item.name}
+                      </span>
+                      <div className={styles.productsListEl__price}>
+                        <div>
+                          Cena: <span>{item.price}zł</span>
+                        </div>
+                      </div>
+                      <div className={styles.productsListEl__btns}>
+                        <button>Edytuj</button>
+                        <button>Usuń</button>
+                      </div>
+                    </div>
+                  </li>
+                ))
+              : null}
           </ul>
         </div>
       </div>

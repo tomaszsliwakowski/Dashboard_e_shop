@@ -833,13 +833,14 @@
   width: fit-content;
   flex-direction: column;
   width: 100%;
-  height: fit-content;
+  height: 260px;
   padding: 1rem 0.5rem;
   border-radius: 0.8rem;
   max-width: 250px;
   align-items: center;
   border: 1px solid rgb(221, 221, 221);
   position: relative;
+  justify-content: space-between;
 }
 .products__list li img {
   width: fit-content;
