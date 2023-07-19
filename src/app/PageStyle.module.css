@@ -842,6 +842,17 @@
   position: relative;
   justify-content: space-between;
 }
+.products__list li:first-of-type {
+  cursor: pointer;
+  background-color: lightgreen;
+  border: none;
+}
+.products__add {
+  position: absolute;
+  top: 35%;
+  left: 35%;
+  color: white;
+}
 .products__list li img {
   width: fit-content;
   max-height: 100px;

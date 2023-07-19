@@ -2,7 +2,7 @@
 import styles from "../../PageStyle.module.css";
 import { BiSearch } from "react-icons/bi";
 import { useEffect, useState } from "react";
-import { AiFillCaretUp, AiFillCaretDown } from "react-icons/ai";
+import { AiFillCaretUp, AiFillCaretDown, AiOutlinePlus } from "react-icons/ai";
 import axios from "axios";
 import { PRODUCT } from "@/types/type";
 const prod = {
@@ -49,7 +49,7 @@ export default function Products() {
       setProduct(reasult.data["Product"][0]);
     });
   }, []);
-  console.log(Product?.products);
+
   return (
     <div className={styles.dashboard}>
       <div className={styles.products}>
@@ -91,6 +91,9 @@ export default function Products() {
         </div>
         <div className={styles.products__show}>
           <ul className={styles.products__list}>
+            <li>
+              <AiOutlinePlus className={styles.products__add} size={80} />
+            </li>
             {Product
               ? Product.products.map((item: PRODUCT, id: number) => (
                   <li key={id}>
