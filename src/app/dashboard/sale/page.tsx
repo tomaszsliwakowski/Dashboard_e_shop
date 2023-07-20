@@ -68,7 +68,11 @@ export default function Sale() {
           <SaleWidget prod={prod} Timer={Timer} setActive={setActiveAddPanel} />
         ) : null}
         {activeAddPanel ? (
-          <SaleAdd prod={prod} setActive={setActiveAddPanel} />
+          <SaleAdd
+            prod={prod}
+            setActive={setActiveAddPanel}
+            active={activeAddPanel}
+          />
         ) : null}
       </div>
     </div>

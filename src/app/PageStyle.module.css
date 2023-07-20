@@ -537,6 +537,7 @@
   background-color: white;
   border-radius: 1rem;
 }
+
 .queueList::-webkit-scrollbar {
   width: 6px;
   height: 6px;

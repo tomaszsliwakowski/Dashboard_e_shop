@@ -19,13 +19,18 @@ const sortOpt = [
   "Podzespoły",
   "Akcesoria",
 ];
-
+const sortValue = [
+  "all",
+  "Smartphone",
+  "Laptop",
+  "Komputer",
+  "Komponenty",
+  "Akcesoria",
+];
 export default function Products() {
   const [openSort, setOpenSort] = useState<boolean>(false);
   const [sortOptValue, setSortOptValue] = useState(0);
-  const [Product, setProduct] = useState<{ products: PRODUCT[] } | undefined>(
-    undefined
-  );
+  const [Product, setProduct] = useState<PRODUCT[] | undefined>(undefined);
   const HandleSortOpt = (num: number) => {
     setSortOptValue(num);
     setOpenSort(false);
@@ -46,9 +51,18 @@ export default function Products() {
 
   useEffect(() => {
     axios.get("http://localhost:8080/api/product").then((reasult) => {
-      setProduct(reasult.data["Product"][0]);
+      let data = reasult.data["Product"][0];
+      setProduct((reasult) => {
+        if (sortValue[sortOptValue] === "all") {
+          return data.products;
+        } else {
+          return data.products.filter(
+            (item: PRODUCT) => item.category === sortValue[sortOptValue]
+          );
+        }
+      });
     });
-  }, []);
+  }, [sortOptValue]);
 
   return (
     <div className={styles.dashboard}>
@@ -95,7 +109,7 @@ export default function Products() {
               <AiOutlinePlus className={styles.products__add} size={80} />
             </li>
             {Product
-              ? Product.products.map((item: PRODUCT, id: number) => (
+              ? Product.map((item: PRODUCT, id: number) => (
                   <li key={id}>
                     <img src={item.img} alt={item.category} />
                     <div className={styles.productsListEl__body}>
