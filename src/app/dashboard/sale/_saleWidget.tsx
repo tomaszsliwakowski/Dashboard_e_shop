@@ -17,9 +17,7 @@ export default function SaleWidget({ Timer, setActive }: props) {
   const [ActiveSale, setActiveSale] = useState<queueProduct | undefined>(
     undefined
   );
-  function sortQueue(a: number, b: number) {
-    return a - b;
-  }
+
   useEffect(() => {
     axios.get("http://localhost:8080/api/product/queue").then((resault) => {
       const data: queueProduct[] = resault.data["Product"];
