@@ -65,7 +65,7 @@ export default function Sale() {
       <div className={styles.sale}>
         <h2>Gorący strzał</h2>
         {!activeAddPanel ? (
-          <SaleWidget prod={prod} Timer={Timer} setActive={setActiveAddPanel} />
+          <SaleWidget Timer={Timer} setActive={setActiveAddPanel} />
         ) : null}
         {activeAddPanel ? (
           <SaleAdd

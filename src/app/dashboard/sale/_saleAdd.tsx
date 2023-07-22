@@ -4,6 +4,7 @@ import styles from "../../PageStyle.module.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { PRODUCT } from "@/types/type";
+import { type } from "os";
 
 type props = {
   prod: any;
@@ -11,8 +12,8 @@ type props = {
   setActive: React.Dispatch<React.SetStateAction<boolean>>;
 };
 type prodAddOpt = {
-  newPrice: number;
-  queue: number;
+  newPrice: string;
+  queue: string;
 };
 
 export default function SaleAdd({ prod, setActive, active }: props) {
@@ -21,8 +22,8 @@ export default function SaleAdd({ prod, setActive, active }: props) {
   );
   const [Product, setProduct] = useState<PRODUCT[] | undefined>(undefined);
   const [ProductAddOptions, setProductAddOptions] = useState<prodAddOpt>({
-    newPrice: 0,
-    queue: 1,
+    newPrice: "0",
+    queue: "1",
   });
   useEffect(() => {
     axios.get("http://localhost:8080/api/product").then((reasult) => {
@@ -32,9 +33,49 @@ export default function SaleAdd({ prod, setActive, active }: props) {
   }, []);
 
   const removeProductToAdd = () => {
-    setProductAddOptions({ newPrice: 0, queue: 1 });
+    setProductAddOptions({ newPrice: "0", queue: "1" });
     setProductToAdd(undefined);
   };
+  const AddProductToQueue = () => {
+    let SalePrice =
+      ProductAddOptions.newPrice !== ""
+        ? parseInt(ProductAddOptions.newPrice)
+        : 0;
+    let queueNum =
+      ProductAddOptions.queue !== "" ? parseInt(ProductAddOptions.queue) : 0;
+    let Product =
+      typeof ProductToAdd?.id === "number" ? ProductToAdd : undefined;
+
+    if (Product && SalePrice !== 0 && queueNum !== 0) {
+      const ProductToSave = {
+        id: Product.id,
+        img: Product.img,
+        name: Product.name,
+        producer: Product.producer,
+        price: Product.price,
+        newPrice: SalePrice,
+        queue: queueNum,
+        category: Product.category,
+        opinion: Product.opinion,
+        spec: Product.spec,
+      };
+
+      axios
+        .post(
+          "http://localhost:8080/api/product/queue",
+          JSON.stringify(ProductToSave)
+        )
+        .then((res) => console.log(res));
+    }
+  };
+
+  const HandleProductOptions = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setProductAddOptions((prev: prodAddOpt) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
   return (
     <div className={styles.saleContainer}>
       <div className={styles.activeSale}>
@@ -56,13 +97,10 @@ export default function SaleAdd({ prod, setActive, active }: props) {
                     <span>Nowa cena: </span>
                     <input
                       type="number"
+                      name="newPrice"
+                      min={0}
                       value={ProductAddOptions.newPrice}
-                      onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                        setProductAddOptions((prev) => ({
-                          queue: prev.queue,
-                          newPrice: parseInt(e.target.value),
-                        }))
-                      }
+                      onChange={HandleProductOptions}
                     />
                     <span>zł</span>
                   </div>
@@ -71,18 +109,15 @@ export default function SaleAdd({ prod, setActive, active }: props) {
                   <span>Miejscie w kolejce: </span>
                   <input
                     type="number"
+                    min={1}
+                    name="queue"
                     value={ProductAddOptions.queue}
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                      setProductAddOptions((prev) => ({
-                        newPrice: prev.newPrice,
-                        queue: parseInt(e.target.value),
-                      }))
-                    }
+                    onChange={HandleProductOptions}
                   />
                 </div>
               </div>
               <div className={styles.saleProduct__btns}>
-                <button>Dodaj</button>
+                <button onClick={() => AddProductToQueue()}>Dodaj</button>
                 <button onClick={() => removeProductToAdd()}>Usuń</button>
               </div>
             </>

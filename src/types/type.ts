@@ -31,3 +31,15 @@ export type PRODUCT = {
   opinion: number;
   spec: [string];
 };
+export type queueProduct = {
+  id: number;
+  img: string;
+  name: string;
+  producer: string;
+  price: number;
+  newPrice: number;
+  queue: number;
+  category: string;
+  opinion: number;
+  spec: [string];
+};
