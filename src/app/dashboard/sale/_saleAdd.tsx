@@ -4,10 +4,9 @@ import styles from "../../PageStyle.module.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { PRODUCT } from "@/types/type";
-import { type } from "os";
+import { ThreeDots } from "react-loader-spinner";
 
 type props = {
-  prod: any;
   active: boolean;
   setActive: React.Dispatch<React.SetStateAction<boolean>>;
 };
@@ -16,7 +15,7 @@ type prodAddOpt = {
   queue: string;
 };
 
-export default function SaleAdd({ prod, setActive, active }: props) {
+export default function SaleAdd({ setActive, active }: props) {
   const [ProductToAdd, setProductToAdd] = useState<PRODUCT | undefined>(
     undefined
   );
@@ -65,7 +64,8 @@ export default function SaleAdd({ prod, setActive, active }: props) {
           "http://localhost:8080/api/product/queue",
           JSON.stringify(ProductToSave)
         )
-        .then((res) => console.log(res));
+        .then(() => setActive((prev) => !prev))
+        .catch((err) => console.log(err.message));
     }
   };
 
@@ -139,7 +139,7 @@ export default function SaleAdd({ prod, setActive, active }: props) {
           className={styles.queueList}
           style={{ borderRadius: `${active ? "1rem 0rem 0rem 1rem" : "1rem"}` }}
         >
-          {Product &&
+          {Product ? (
             Product.map((item: PRODUCT, id: number) => (
               <li key={id}>
                 <img src={item.img} alt={item.category} />
@@ -155,7 +155,18 @@ export default function SaleAdd({ prod, setActive, active }: props) {
                   </div>
                 </div>
               </li>
-            ))}
+            ))
+          ) : (
+            <ThreeDots
+              height="120"
+              width="120"
+              radius="9"
+              color="#4895ef"
+              ariaLabel="three-dots-loading"
+              wrapperClass={styles.LoaderSale}
+              visible={true}
+            />
+          )}
         </ul>
       </div>
     </div>

@@ -4,13 +4,7 @@ import styles from "../../PageStyle.module.css";
 import { useState, useEffect } from "react";
 import SaleWidget from "./_saleWidget";
 import SaleAdd from "./_saleAdd";
-
-const prod = {
-  img: "https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2022/9/pr_2022_9_9_10_29_57_140_02.jpg",
-  name: "Apple iPhone 14 128GB Starlight",
-  price: 3999.0,
-  oldprice: 4249.0,
-};
+import axios from "axios";
 
 export default function Sale() {
   const [activeAddPanel, setActiveAddPanel] = useState<boolean>(false);
@@ -60,6 +54,7 @@ export default function Sale() {
       TimeToExpire();
     }, 1000);
   }, []);
+
   return (
     <div className={styles.dashboard}>
       <div className={styles.sale}>
@@ -68,11 +63,7 @@ export default function Sale() {
           <SaleWidget Timer={Timer} setActive={setActiveAddPanel} />
         ) : null}
         {activeAddPanel ? (
-          <SaleAdd
-            prod={prod}
-            setActive={setActiveAddPanel}
-            active={activeAddPanel}
-          />
+          <SaleAdd setActive={setActiveAddPanel} active={activeAddPanel} />
         ) : null}
       </div>
     </div>

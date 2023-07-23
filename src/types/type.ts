@@ -33,6 +33,7 @@ export type PRODUCT = {
 };
 export type queueProduct = {
   id: number;
+  _id: string;
   img: string;
   name: string;
   producer: string;

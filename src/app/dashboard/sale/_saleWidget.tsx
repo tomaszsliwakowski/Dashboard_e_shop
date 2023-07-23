@@ -4,10 +4,17 @@ import styles from "../../PageStyle.module.css";
 import { AiOutlinePlus } from "react-icons/ai";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { ThreeDots } from "react-loader-spinner";
 
 type props = {
   Timer: TimerType | undefined;
   setActive: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+type edit = {
+  id: string;
+  ePrice: string;
+  active: boolean;
 };
 
 export default function SaleWidget({ Timer, setActive }: props) {
@@ -17,21 +24,59 @@ export default function SaleWidget({ Timer, setActive }: props) {
   const [ActiveSale, setActiveSale] = useState<queueProduct | undefined>(
     undefined
   );
+  const [EditSale, setEditSale] = useState<edit>({
+    id: "0",
+    ePrice: "0",
+    active: false,
+  });
+  const [refresh, setRefresh] = useState<boolean>(false);
 
   useEffect(() => {
-    axios.get("http://localhost:8080/api/product/queue").then((resault) => {
-      const data: queueProduct[] = resault.data["Product"];
-      setActiveSale(resault.data["Product"][0]);
-      setProducts(
-        data
-          .filter((item) => item.id !== 0)
-          .sort(function (a, b) {
+    axios
+      .get("http://localhost:8080/api/product/queue")
+      .then((resault) => {
+        const data: queueProduct[] = resault.data["Product"];
+        setActiveSale(resault.data["Product"][0]);
+        setProducts(
+          data.slice(1).sort(function (a, b) {
             return a.queue - b.queue;
           })
+        );
+      })
+      .catch((err) => console.log(err.message));
+  }, [refresh]);
+  const editSaleProduct = () => {
+    if (EditSale.ePrice === "") return;
+    axios
+      .put(
+        "http://localhost:8080/api/product/queue",
+        JSON.stringify({
+          id: EditSale.id,
+          price: EditSale.ePrice,
+        })
+      )
+      .then(() => {
+        setRefresh((prev) => !prev);
+      });
+    setEditSale({ id: "0", ePrice: "0", active: false });
+  };
+
+  const removeSaleProduct = (id: string) => {
+    if (!id && id === "") return;
+    axios
+      .delete(`http://localhost:8080/api/product/queue/${id}`)
+      .then(() => setRefresh((prev) => !prev));
+  };
+
+  useEffect(() => {
+    if (!Timer) return;
+    if (Timer.hour === 0 && Timer.minutes === 0 && Timer.second === 0) {
+      axios.delete(
+        `http://localhost:8080/api/product/queue/${ActiveSale?._id}`
       );
-    });
-  }, []);
-  console.log(ActiveSale);
+    }
+  }, [Timer]);
+
   return (
     <div className={styles.saleContainer}>
       <div className={styles.activeSale}>
@@ -88,16 +133,44 @@ export default function SaleWidget({ Timer, setActive }: props) {
                 </div>
               </div>
               <div className={styles.saleProduct__btns}>
-                <button>Edytuj promocje</button>
-                <button>Usuń promocje</button>
+                <button
+                  onClick={() =>
+                    setEditSale((prev) => ({
+                      active: true,
+                      id: ActiveSale._id,
+                      ePrice: prev.ePrice,
+                    }))
+                  }
+                >
+                  Edytuj promocje
+                </button>
+                <button onClick={() => removeSaleProduct(ActiveSale._id)}>
+                  Usuń promocje
+                </button>
               </div>
-              {false ? (
+              {EditSale.active && EditSale.id === ActiveSale._id ? (
                 <div className={styles.queueEditMain}>
                   <span>Dodaj cenę</span>
-                  <input type="number" value={2999.0} />
+                  <input
+                    type="number"
+                    value={EditSale.ePrice}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                      setEditSale((prev: edit) => ({
+                        active: prev.active,
+                        id: prev.id,
+                        ePrice: e.target.value,
+                      }))
+                    }
+                  />
                   <div>
-                    <button>Zapisz</button>
-                    <button>Anuluj</button>
+                    <button onClick={editSaleProduct}>Zapisz</button>
+                    <button
+                      onClick={() =>
+                        setEditSale({ active: false, id: "0", ePrice: "0" })
+                      }
+                    >
+                      Anuluj
+                    </button>
                   </div>
                 </div>
               ) : null}
@@ -113,7 +186,7 @@ export default function SaleWidget({ Timer, setActive }: props) {
           <button onClick={() => setActive(true)}>Dodaj</button>
         </div>
         <ul className={styles.queueList}>
-          {Products &&
+          {Products ? (
             Products.map((item, id) => (
               <li key={id}>
                 <img src={item.img} alt={item.category} />
@@ -128,23 +201,62 @@ export default function SaleWidget({ Timer, setActive }: props) {
                     </div>
                   </div>
                   <div className={styles.queueListEl__btns}>
-                    <button>Edytuj</button>
-                    <button>Usuń</button>
+                    <button
+                      onClick={() =>
+                        setEditSale((prev) => ({
+                          active: true,
+                          id: item._id,
+                          ePrice: prev.ePrice,
+                        }))
+                      }
+                    >
+                      Edytuj
+                    </button>
+                    <button onClick={() => removeSaleProduct(item._id)}>
+                      Usuń
+                    </button>
                   </div>
                 </div>
                 <span className={styles.queueNum}>{item.queue}</span>
-                {false ? (
+                {EditSale.active && EditSale.id === item._id ? (
                   <div className={styles.queueEdit}>
                     <span>Dodaj cenę</span>
-                    <input type="number" value={2999.0} />
+                    <input
+                      type="number"
+                      value={EditSale.ePrice}
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                        setEditSale((prev: edit) => ({
+                          active: prev.active,
+                          id: prev.id,
+                          ePrice: e.target.value,
+                        }))
+                      }
+                    />
                     <div>
-                      <button>Zapisz</button>
-                      <button>Anuluj</button>
+                      <button onClick={editSaleProduct}>Zapisz</button>
+                      <button
+                        onClick={() =>
+                          setEditSale({ active: false, id: "0", ePrice: "0" })
+                        }
+                      >
+                        Anuluj
+                      </button>
                     </div>
                   </div>
                 ) : null}
               </li>
-            ))}
+            ))
+          ) : (
+            <ThreeDots
+              height="120"
+              width="120"
+              radius="9"
+              color="#4895ef"
+              ariaLabel="three-dots-loading"
+              wrapperClass={styles.LoaderSale}
+              visible={true}
+            />
+          )}
         </ul>
       </div>
     </div>

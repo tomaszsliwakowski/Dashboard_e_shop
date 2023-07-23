@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { AiFillCaretUp, AiFillCaretDown, AiOutlinePlus } from "react-icons/ai";
 import axios from "axios";
 import { PRODUCT } from "@/types/type";
+import { ThreeDots } from "react-loader-spinner";
 const prod = {
   img: "https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2022/9/pr_2022_9_9_10_29_57_140_02.jpg",
   name: "Apple iPhone 14 128GB Starlight",
@@ -105,30 +106,42 @@ export default function Products() {
         </div>
         <div className={styles.products__show}>
           <ul className={styles.products__list}>
-            <li>
-              <AiOutlinePlus className={styles.products__add} size={80} />
-            </li>
-            {Product
-              ? Product.map((item: PRODUCT, id: number) => (
-                  <li key={id}>
-                    <img src={item.img} alt={item.category} />
-                    <div className={styles.productsListEl__body}>
-                      <span className={styles.productsListEl__name}>
-                        {item.name}
-                      </span>
-                      <div className={styles.productsListEl__price}>
-                        <div>
-                          Cena: <span>{item.price}zł</span>
-                        </div>
-                      </div>
-                      <div className={styles.productsListEl__btns}>
-                        <button>Edytuj</button>
-                        <button>Usuń</button>
+            {Product ? (
+              <li>
+                <AiOutlinePlus className={styles.products__add} size={80} />
+              </li>
+            ) : null}
+            {Product ? (
+              Product.map((item: PRODUCT, id: number) => (
+                <li key={id}>
+                  <img src={item.img} alt={item.category} />
+                  <div className={styles.productsListEl__body}>
+                    <span className={styles.productsListEl__name}>
+                      {item.name}
+                    </span>
+                    <div className={styles.productsListEl__price}>
+                      <div>
+                        Cena: <span>{item.price}zł</span>
                       </div>
                     </div>
-                  </li>
-                ))
-              : null}
+                    <div className={styles.productsListEl__btns}>
+                      <button>Edytuj</button>
+                      <button>Usuń</button>
+                    </div>
+                  </div>
+                </li>
+              ))
+            ) : (
+              <ThreeDots
+                height="120"
+                width="120"
+                radius="9"
+                color="#4895ef"
+                ariaLabel="three-dots-loading"
+                wrapperClass={styles.LoaderSale}
+                visible={true}
+              />
+            )}
           </ul>
         </div>
       </div>

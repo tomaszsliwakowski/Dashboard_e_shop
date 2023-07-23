@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 import dbConnect from "@/app/api/db";
 import ProdQueue from "@/mongo/model/schema_queueEl";
-import { NextApiRequest } from "next";
 import { queueProduct } from "@/types/type";
 
 dbConnect();
@@ -19,7 +18,6 @@ export async function POST(req: Request) {
     opinion,
     spec,
   } = await req.json();
-  console.log(name);
   let newQueueEl = new ProdQueue({
     id: id,
     img: img,
@@ -34,6 +32,14 @@ export async function POST(req: Request) {
   });
   await newQueueEl.save();
   return NextResponse.json({ message: "Product save to queue" });
+}
+export async function PUT(req: Request) {
+  const { id, price } = await req.json();
+  const UpdateSale = await ProdQueue.findByIdAndUpdate(
+    { _id: id },
+    { newPrice: price }
+  );
+  return NextResponse.json({ message: "Product Updated", UpdateSale });
 }
 
 export async function GET() {
