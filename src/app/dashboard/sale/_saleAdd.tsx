@@ -25,10 +25,12 @@ export default function SaleAdd({ setActive, active }: props) {
     queue: "1",
   });
   useEffect(() => {
-    axios.get("http://localhost:8080/api/product").then((reasult) => {
-      let data = reasult.data["Product"][0];
-      setProduct(data.products);
-    });
+    axios
+      .get("https://dashboard-e-shop.vercel.app/api/product")
+      .then((reasult) => {
+        let data = reasult.data["Product"][0];
+        setProduct(data.products);
+      });
   }, []);
 
   const removeProductToAdd = () => {
@@ -61,7 +63,7 @@ export default function SaleAdd({ setActive, active }: props) {
 
       axios
         .post(
-          "http://localhost:8080/api/product/queue",
+          "https://dashboard-e-shop.vercel.app/api/product/queue",
           JSON.stringify(ProductToSave)
         )
         .then(() => setActive((prev) => !prev))

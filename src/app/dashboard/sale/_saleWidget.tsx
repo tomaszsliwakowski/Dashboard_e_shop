@@ -33,7 +33,7 @@ export default function SaleWidget({ Timer, setActive }: props) {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/api/product/queue")
+      .get("hhttps://dashboard-e-shop.vercel.app/api/product/queue")
       .then((resault) => {
         const data: queueProduct[] = resault.data["Product"];
         setActiveSale(resault.data["Product"][0]);
@@ -49,7 +49,7 @@ export default function SaleWidget({ Timer, setActive }: props) {
     if (EditSale.ePrice === "") return;
     axios
       .put(
-        "http://localhost:8080/api/product/queue",
+        "https://dashboard-e-shop.vercel.app/api/product/queue",
         JSON.stringify({
           id: EditSale.id,
           price: EditSale.ePrice,
@@ -64,7 +64,7 @@ export default function SaleWidget({ Timer, setActive }: props) {
   const removeSaleProduct = (id: string) => {
     if (!id && id === "") return;
     axios
-      .delete(`http://localhost:8080/api/product/queue/${id}`)
+      .delete(`https://dashboard-e-shop.vercel.app/api/product/queue/${id}`)
       .then(() => setRefresh((prev) => !prev));
   };
 
@@ -72,7 +72,7 @@ export default function SaleWidget({ Timer, setActive }: props) {
     if (!Timer) return;
     if (Timer.hour === 0 && Timer.minutes === 0 && Timer.second === 0) {
       axios.delete(
-        `http://localhost:8080/api/product/queue/${ActiveSale?._id}`
+        `https://dashboard-e-shop.vercel.app/api/product/queue/${ActiveSale?._id}`
       );
     }
   }, [Timer]);

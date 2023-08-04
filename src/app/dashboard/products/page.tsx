@@ -51,18 +51,20 @@ export default function Products() {
   }, []);
 
   useEffect(() => {
-    axios.get("http://localhost:8080/api/product").then((reasult) => {
-      let data = reasult.data["Product"][0];
-      setProduct((reasult) => {
-        if (sortValue[sortOptValue] === "all") {
-          return data.products;
-        } else {
-          return data.products.filter(
-            (item: PRODUCT) => item.category === sortValue[sortOptValue]
-          );
-        }
+    axios
+      .get("https://dashboard-e-shop.vercel.app/api/product")
+      .then((reasult) => {
+        let data = reasult.data["Product"][0];
+        setProduct((reasult) => {
+          if (sortValue[sortOptValue] === "all") {
+            return data.products;
+          } else {
+            return data.products.filter(
+              (item: PRODUCT) => item.category === sortValue[sortOptValue]
+            );
+          }
+        });
       });
-    });
   }, [sortOptValue]);
 
   return (
