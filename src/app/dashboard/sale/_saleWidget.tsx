@@ -33,7 +33,7 @@ export default function SaleWidget({ Timer, setActive }: props) {
 
   useEffect(() => {
     axios
-      .get("hhttps://dashboard-e-shop.vercel.app/api/product/queue")
+      .get("https://dashboard-e-shop.vercel.app/api/product/queue")
       .then((resault) => {
         const data: queueProduct[] = resault.data["Product"];
         setActiveSale(resault.data["Product"][0]);
