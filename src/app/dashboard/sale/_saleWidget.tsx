@@ -43,7 +43,7 @@ export default function SaleWidget({ Timer, setActive }: props) {
           })
         );
       })
-      .catch((err) => console.log(err.message));
+      .catch(() => console.log("Error"));
   }, [refresh]);
   const editSaleProduct = () => {
     if (EditSale.ePrice === "") return;
