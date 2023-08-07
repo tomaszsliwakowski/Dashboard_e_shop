@@ -1,5 +1,5 @@
 # Shop Dashboard 
-# Tech { Next JS }
+# Tech { Next JS , MongoDB}
 
 DEMO: https://dashboard-e-shop.vercel.app/
 LOGIN {
