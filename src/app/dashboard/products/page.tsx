@@ -21,7 +21,7 @@ const sortOpt = [
   "Akcesoria",
 ];
 const sortValue = [
-  "all",
+  "All",
   "Smartphone",
   "Laptop",
   "Komputer",
@@ -56,7 +56,7 @@ export default function Products() {
       .then((reasult) => {
         let data = reasult.data["Product"][0];
         setProduct((reasult) => {
-          if (sortValue[sortOptValue] === "all") {
+          if (sortValue[sortOptValue] === "All") {
             return data.products;
           } else {
             return data.products.filter(
