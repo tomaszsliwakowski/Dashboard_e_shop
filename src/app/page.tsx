@@ -1,5 +1,4 @@
 "use client";
-import styles from "./PageStyle.module.css";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase/config";
 import { useEffect, useState } from "react";
@@ -8,9 +7,14 @@ import { useRouter } from "next/navigation";
 import { onAuthStateChanged } from "firebase/auth";
 import { ThreeDots } from "react-loader-spinner";
 
+const USER_NOT_EXIST = "Użytkownik nie znaleziony";
+const WRONG_PASSWORD = "Podano złe hasło";
+const TO_MANY_REQUEST = "Za dużo nieudanych prób logowania, spróbuj później";
+
 export default function Panel() {
   const { push } = useRouter();
   const [user, setuser] = useState<string | undefined | null>(undefined);
+  const [error, setError] = useState({});
   const [LoginValue, setLoginValue] = useState<LoginType>({
     email: "",
     password: "",
@@ -23,7 +27,22 @@ export default function Panel() {
         auth,
         LoginValue.email,
         LoginValue.password
-      ).then(() => push("/dashboard"));
+      )
+        .then(() => {
+          setError("");
+          push("/dashboard");
+        })
+        .catch((res) => {
+          if (res.message.includes("user-not-found")) {
+            setError(USER_NOT_EXIST);
+          }
+          if (res.message.includes("wrong-password")) {
+            setError(WRONG_PASSWORD);
+          }
+          if (res.message.includes("too-many-requests")) {
+            setError(TO_MANY_REQUEST);
+          }
+        });
     } catch (error) {
       console.log((error as Error).message);
     }
@@ -49,20 +68,20 @@ export default function Panel() {
           radius="9"
           color="#4895ef"
           ariaLabel="three-dots-loading"
-          wrapperClass={styles.Loader}
+          wrapperClass=""
           visible={true}
         />
       ) : null}
       {user === "not-logged" ? (
-        <div className={styles.loginPage}>
-          <div className={styles.loginMain}>
-            <h1>SHOP CMS</h1>
-            <form onSubmit={login}>
-              <label className={styles.loginUser}>
-                <span>Email</span>
+        <div className="bg-gradient-to-r from-cyan-500 to-blue-500 min-h-screen min-w-full flex justify-center items-center">
+          <div className="bg-white w-full max-w-md py-5 px-10 border-none rounded-xl flex flex-col justify-between gap-5">
+            <h1 className="text-3xl font-bold py-2">CMS Logowanie</h1>
+            <form onSubmit={login} className="flex flex-col gap-6">
+              <label className="flex flex-col">
+                <span className="px-1">Email</span>
                 <input
+                  className="outline-none border-solid border-2 border-slate-300  rounded-xl px-2 py-1 w-full max-w-4xl"
                   type="email"
-                  placeholder="..."
                   value={LoginValue.email}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                     setLoginValue((prev: LoginType) => ({
@@ -71,12 +90,15 @@ export default function Panel() {
                     }))
                   }
                 />
+                {error === USER_NOT_EXIST ? (
+                  <span className="px-1 py-1 text-red-600">{error}</span>
+                ) : null}
               </label>
-              <label className={styles.loginPasswd}>
-                <span>Hasło</span>
+              <label className="flex flex-col">
+                <span className="px-1">Hasło</span>
                 <input
+                  className="outline-none border-solid border-2 border-slate-300 rounded-xl px-2 py-1"
                   type="password"
-                  placeholder="..."
                   value={LoginValue.password}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                     setLoginValue((prev: LoginType) => ({
@@ -85,8 +107,18 @@ export default function Panel() {
                     }))
                   }
                 />
+                {error === WRONG_PASSWORD || error === TO_MANY_REQUEST ? (
+                  <span className="px-1 py-1 text-red-600 text-sm">
+                    {error}
+                  </span>
+                ) : null}
               </label>
-              <button type="submit">Zaloguj się</button>
+              <button
+                type="submit"
+                className="font-bold text-white bg-gradient-to-r from-cyan-500 to-blue-500 border-solid rounded-xl mx-0 my-3 mt-5 py-2"
+              >
+                Zaloguj się
+              </button>
             </form>
           </div>
         </div>
