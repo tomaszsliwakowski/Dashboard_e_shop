@@ -62,15 +62,17 @@ export default function Panel() {
   return (
     <>
       {user !== "not-logged" ? (
-        <ThreeDots
-          height="120"
-          width="120"
-          radius="9"
-          color="#4895ef"
-          ariaLabel="three-dots-loading"
-          wrapperClass=""
-          visible={true}
-        />
+        <div className="flex justify-center items-center min-h-screen">
+          <ThreeDots
+            height="120"
+            width="120"
+            radius="9"
+            color="#4895ef"
+            ariaLabel="three-dots-loading"
+            wrapperClass=""
+            visible={true}
+          />
+        </div>
       ) : null}
       {user === "not-logged" ? (
         <div className="bg-gradient-to-r from-cyan-500 to-blue-500 min-h-screen min-w-full flex justify-center items-center">
