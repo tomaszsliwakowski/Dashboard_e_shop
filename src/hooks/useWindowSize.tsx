@@ -11,6 +11,7 @@ function useWindowSize() {
     width: undefined,
     height: undefined,
   });
+  if (isServer()) return { width: 0, height: 0 };
   useEffect(() => {
     function Resize() {
       setWindowSize({
@@ -26,3 +27,5 @@ function useWindowSize() {
 }
 
 export default useWindowSize;
+
+export const isServer = () => typeof window === "undefined";
