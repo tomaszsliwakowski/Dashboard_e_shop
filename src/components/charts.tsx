@@ -28,7 +28,7 @@ export default function Charts(props: PROPS) {
       },
     ],
   });
-  const { width, height } = useWindowSize();
+  const { width } = useWindowSize();
 
   function lastYear(): string[] {
     let date: Date = new Date();
