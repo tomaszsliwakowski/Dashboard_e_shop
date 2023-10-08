@@ -12,7 +12,7 @@ module.exports = {
       borderWidth: {
         1: "1px",
       },
-      margin: {
+      padding: {
         full: "250px",
         mobile: "70px",
       },

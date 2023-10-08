@@ -30,7 +30,7 @@ export default function Menu() {
     <div
       className={`${
         openMenu ? "max-md:max-w-full" : " max-md:max-w-mobile"
-      } w-full max-w-xs bg-gray-700 fixed h-screen `}
+      } w-full max-w-xs bg-gray-700 fixed h-screen  z-50`}
     >
       <Header openMenu={openMenu} setOpenMenu={setOpenMenu} />
       <MenuUser openMenu={openMenu} />
@@ -90,7 +90,7 @@ export default function Menu() {
           />
         </div>
       ) : null}
-      <div className="absolute bottom-6 left-6 max-md:left-2.5 border-1 py-1 px-4 rounded-lg duration-150 text-white font-bold hover:bg-white hover:text-slate-600">
+      <div className="absolute bottom-6 left-6 max-md:left-2.5 max-md:bottom-16 border-1 py-1 px-4 rounded-lg duration-150 text-white font-bold hover:bg-white hover:text-slate-600">
         <button
           onClick={logOut}
           className="flex justify-center items-center gap-2"

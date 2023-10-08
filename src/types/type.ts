@@ -44,3 +44,22 @@ export type queueProduct = {
   opinion: number;
   spec: [string];
 };
+
+export type chartType =
+  | "area"
+  | "line"
+  | "bar"
+  | "pie"
+  | "donut"
+  | "radialBar"
+  | "scatter"
+  | "bubble"
+  | "heatmap"
+  | "candlestick"
+  | "boxPlot"
+  | "radar"
+  | "polarArea"
+  | "rangeBar"
+  | "rangeArea"
+  | "treemap"
+  | undefined;
