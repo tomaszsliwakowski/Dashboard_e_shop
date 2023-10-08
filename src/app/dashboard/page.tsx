@@ -1,9 +1,15 @@
 import DashboardHeader from "@/components/DashboardHeader";
 import Charts from "@/components/charts";
 import Widget from "@/components/widget";
+import dynamic from "next/dynamic";
 import { AiFillHome } from "react-icons/ai";
 import { BsFillBoxFill } from "react-icons/bs";
 import { FaMoneyBillAlt } from "react-icons/fa";
+
+const DynamicCharts = dynamic(() => import("../../components/charts"), {
+  ssr: false,
+});
+
 export default function Dashboard() {
   const data = {
     orderYear: [50, 55, 68, 72, 83, 85, 88, 97, 120],
@@ -43,8 +49,12 @@ export default function Dashboard() {
         />
       </div>
       <div className="flex gap-4 w-full flex-wrap mt-4">
-        <Charts type="area" chartName="Zamówienia" chartData={data.orderYear} />
-        <Charts
+        <DynamicCharts
+          type="area"
+          chartName="Zamówienia"
+          chartData={data.orderYear}
+        />
+        <DynamicCharts
           type="area"
           chartName="Sprzedaż (PLN)"
           chartData={data.saleYear}
