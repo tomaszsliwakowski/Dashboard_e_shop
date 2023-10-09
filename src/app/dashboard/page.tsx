@@ -48,7 +48,7 @@ export default function Dashboard() {
           color="bg-gradient-to-r from-yellow-300 to-amber-500"
         />
       </div>
-      <div className="flex gap-4 w-full flex-wrap mt-4">
+      <div className="flex gap-4 w-full mt-4 max-xl:flex-wrap">
         <DynamicCharts
           type="area"
           chartName="Zamówienia"

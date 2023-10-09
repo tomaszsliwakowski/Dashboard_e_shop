@@ -34,33 +34,34 @@ export default function Charts(props: PROPS) {
     let date: Date = new Date();
     let lastMonths: string[] = [],
       monthNames: string[] = [
-        "Dec",
-        "Nov",
-        "Oct",
-        "Sep",
-        "Aug",
-        "Jul",
-        "Jun",
-        "May",
-        "Apr",
-        "Mar",
-        "Feb",
         "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec",
       ];
     for (let i = 0; i < 12; i++) {
       lastMonths.push(monthNames[date.getMonth()]);
       date.setMonth(date.getMonth() - 1);
     }
-    return lastMonths;
+    return lastMonths.splice(0, 9).reverse();
   }
+
   return (
-    <div className="max-md:pr-2 max-md:w-full">
-      <h2 className="pl-4 font-bold text-2xl mb-2">{chartName}</h2>
+    <div className="max-md:pr-2 w-full max-w-2xl">
+      <h2 className="pl-4 font-bold text-2xl mb-2 ">{chartName}</h2>
       <Chart
         options={state.options}
         series={state.series}
         type={type}
-        width={width && width < 940 ? "100%" : 650}
+        width={"100%"}
         height={500}
       />
     </div>
