@@ -1,4 +1,5 @@
 import DashboardHeader from "@/components/DashboardHeader";
+import Timer from "@/components/timer";
 import { AiFillTags, AiOutlineDelete } from "react-icons/ai";
 import { TbArrowsExchange2 } from "react-icons/tb";
 
@@ -6,7 +7,7 @@ export default function Sale() {
   return (
     <div className="w-full h-full pl-8 pr-4 pt-2 pb-4">
       <DashboardHeader text="Promocje" Icon={AiFillTags} />
-      <div className="flex pt-8">
+      <div className="flex pt-4">
         <div className="py-2 max-w-md w-full border-r-1 border-gray-300">
           <h2 className="text-2xl font-medium">Gorący strzał</h2>
           <h3 className="text-sm text-gray-500">Aktywny</h3>
@@ -28,16 +29,13 @@ export default function Sale() {
                 <span className="text-gray-500">Cena regularna:</span>
                 <span className=" font-medium tracking-wide">3999.00zł</span>
               </div>
-              <div className="mt-2 flex flex-col items-center">
-                <span className="text-xl">Koniec promocji za:</span>
-                <span className="text-2xl my-2">17:12:12</span>
-              </div>
+              <Timer />
             </div>
-            <div className="flex justify-center mt-2 gap-8">
-              <button className="p-2 text-red-600">
+            <div className="flex justify-center mt-4 gap-8">
+              <button className="p-2 text-red-600 border-1 border-red-600 rounded-md hover:bg-red-600 hover:text-white duration-150">
                 <AiOutlineDelete size={25} />
               </button>
-              <button className="p-2 text-blue-600">
+              <button className="p-2 text-blue-600 border-1 border-blue-600 rounded-md hover:bg-blue-600 hover:text-white duration-150">
                 <TbArrowsExchange2 size={25} />
               </button>
             </div>
