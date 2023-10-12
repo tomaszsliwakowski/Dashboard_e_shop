@@ -57,10 +57,10 @@ export default function Timer() {
 
   return (
     <div className="mt-2 flex flex-col items-center">
-      <span className="text-xl">Koniec promocji za:</span>
+      <span className="text-xl max-sm:text-base">Koniec promocji za:</span>
       <div className="flex justify-center mt-2 ">
         <div className="flex flex-col px-2 items-center">
-          <span className="text-3xl px-1 py-1 bg-gray-200 rounded-md">
+          <span className="text-3xl max-sm:text-xl px-1 py-1 bg-gray-200 rounded-md">
             {timer !== undefined
               ? timer.hour > 9
                 ? timer?.hour
@@ -69,9 +69,9 @@ export default function Timer() {
           </span>
           <span className="text-sm text-center">godz.</span>
         </div>
-        <span className="text-3xl">:</span>
+        <span className="text-3xl max-sm:text-2xl">:</span>
         <div className="flex flex-col px-2">
-          <span className="text-3xl px-1 py-1 bg-gray-200 rounded-md">
+          <span className="text-3xl max-sm:text-xl px-1 py-1 bg-gray-200 rounded-md">
             {timer !== undefined
               ? timer.minutes > 9
                 ? timer?.minutes
@@ -80,9 +80,9 @@ export default function Timer() {
           </span>
           <span className="text-sm text-center">min.</span>
         </div>
-        <span className="text-3xl">:</span>
+        <span className="text-3xl max-sm:text-2xl">:</span>
         <div className="flex flex-col px-2 ">
-          <span className="text-3xl px-1 py-1 bg-gray-200 rounded-md">
+          <span className="text-3xl max-sm:text-xl px-1 py-1 bg-gray-200 rounded-md">
             {timer !== undefined
               ? timer.second > 9
                 ? timer?.second
