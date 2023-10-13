@@ -16,6 +16,12 @@ module.exports = {
         full: "250px",
         mobile: "70px",
       },
+      height: {
+        fs: "70vh",
+      },
+      zIndex: {
+        full: "100",
+      },
     },
   },
   plugins: [],

@@ -1,5 +1,5 @@
+"use client";
 import DashboardHeader from "@/components/DashboardHeader";
-import Charts from "@/components/charts";
 import Widget from "@/components/widget";
 import dynamic from "next/dynamic";
 import { AiFillHome } from "react-icons/ai";

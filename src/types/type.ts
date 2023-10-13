@@ -39,7 +39,6 @@ export type queueProduct = {
   producer: string;
   price: number;
   newPrice: number;
-  queue: number;
   category: string;
   opinion: number;
   spec: [string];
