@@ -19,6 +19,15 @@ module.exports = {
       height: {
         fs: "70vh",
       },
+      maxHeight: {
+        fs: "85vh",
+        modalfs: "95vh",
+        ms: "70vh",
+        md: "720px",
+      },
+      minWidth: {
+        sm: "135px",
+      },
       zIndex: {
         full: "100",
       },
