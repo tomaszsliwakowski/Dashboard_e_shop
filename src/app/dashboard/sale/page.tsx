@@ -151,7 +151,10 @@ export default function Sale() {
                         {activeSale?.price.toFixed(2)}zł
                       </span>
                     </div>
-                    <Timer />
+                    <Timer
+                      deleteProductFromQueue={deleteProductFromQueue}
+                      activeSale={activeSale}
+                    />
                   </div>
                   <div className="flex justify-center mt-4 gap-8">
                     <button

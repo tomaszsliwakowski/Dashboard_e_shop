@@ -1,8 +1,14 @@
 "use client";
-import { TimerType } from "@/types/type";
+import { TimerType, queueProduct } from "@/types/type";
 import { useEffect, useState } from "react";
 
-export default function Timer() {
+type PROPS = {
+  activeSale: queueProduct;
+  deleteProductFromQueue: Function;
+};
+
+export default function Timer(props: PROPS) {
+  const { activeSale, deleteProductFromQueue } = props;
   const [timer, setTimer] = useState<TimerType | undefined>(undefined);
 
   const TimeToExpire = () => {
@@ -54,6 +60,13 @@ export default function Timer() {
       clearInterval(intervalId);
     };
   }, []);
+
+  useEffect(() => {
+    if (!timer) return;
+    if (timer.hour === 0 && timer.minutes === 0 && timer.second === 0) {
+      deleteProductFromQueue(activeSale._id);
+    }
+  }, [timer]);
 
   return (
     <div className="mt-2 flex flex-col items-center">
