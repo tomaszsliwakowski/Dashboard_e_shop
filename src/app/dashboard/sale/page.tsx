@@ -1,7 +1,7 @@
 "use client";
 import DashboardHeader from "@/components/DashboardHeader";
-import NextSale from "@/components/nextSale";
-import Timer from "@/components/timer";
+import NextSale from "@/components/sale/nextSale";
+import Timer from "@/components/sale/timer";
 import { AiFillTags, AiOutlineDelete } from "react-icons/ai";
 import { TbArrowsExchange2 } from "react-icons/tb";
 import { HiOutlinePlusSm } from "react-icons/hi";
@@ -11,7 +11,7 @@ import { DELETE_SALE, GET_SALE, UPDATE_SALE } from "@/routes";
 import { queueProduct } from "@/types/type";
 import { ThreeDots } from "react-loader-spinner";
 import EditModal from "@/components/editModal";
-import AddModal from "@/components/addModal";
+import AddModal from "@/components/sale/addModal";
 import toast from "react-hot-toast";
 
 export type ModalType = {
@@ -233,9 +233,10 @@ export default function Sale() {
         >
           {modal.type === "edit" ? (
             <EditModal
+              type="sale"
               setModal={setModal}
               modal={modal}
-              updateProductSale={updateProductSale}
+              updateProduct={updateProductSale}
             />
           ) : null}
           {modal.type === "add" ? (

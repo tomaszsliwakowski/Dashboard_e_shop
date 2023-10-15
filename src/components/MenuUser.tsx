@@ -1,4 +1,8 @@
+"use client";
+import { onAuthStateChanged } from "firebase/auth";
+import { useEffect, useState } from "react";
 import { AiOutlineUser } from "react-icons/ai";
+import { auth } from "../../firebase/config";
 
 type PROPS = {
   openMenu: boolean;
@@ -6,6 +10,16 @@ type PROPS = {
 
 export default function MenuUser(props: PROPS) {
   const { openMenu } = props;
+  const [user, setUser] = useState("");
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (currentUser) => {
+      if (currentUser?.email) {
+        setUser(currentUser.email);
+      }
+    });
+  }, []);
+
   return (
     <div
       className={`${
@@ -13,7 +27,7 @@ export default function MenuUser(props: PROPS) {
       }`}
     >
       <span className="text-lg flex gap-3 px-4 py-2 justify-start items-center text-white ">
-        <AiOutlineUser size={30} /> Admin
+        <AiOutlineUser size={30} /> {user.split("@")[0]}
       </span>
     </div>
   );

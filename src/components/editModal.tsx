@@ -4,11 +4,12 @@ import { Dispatch, SetStateAction, useState } from "react";
 type PROPS = {
   setModal: Dispatch<SetStateAction<ModalType>>;
   modal: ModalType;
-  updateProductSale: Function;
+  updateProduct: Function;
+  type: string;
 };
 
 export default function EditModal(props: PROPS) {
-  const { setModal, modal, updateProductSale } = props;
+  const { setModal, modal, updateProduct, type } = props;
   const [priceValue, setPriceValue] = useState<string>("");
 
   function setNewPriceValue(e: React.ChangeEvent<HTMLInputElement>) {
@@ -23,9 +24,14 @@ export default function EditModal(props: PROPS) {
       </h2>
       <div className="w-full pb-8 pt-4 flex flex-col gap-4 ">
         <div className="w-full flex flex-col gap-1">
-          <span className=" text-xl">Cena promocyjna:</span>
+          <span className=" text-xl">
+            {type === "sale" ? "Cena promocyjna:" : "Cena produktu:"}
+          </span>
           <span className="text-lg tracking-widest bg-gray-200 w-fit px-2 py-1 rounded-lg">
-            {modal.product?.newPrice.toFixed(2)}zł
+            {type === "sale"
+              ? modal.product?.newPrice.toFixed(2)
+              : modal.product?.price.toFixed(2)}
+            zł
           </span>
         </div>
         <div className="w-full flex flex-col gap-1">
@@ -46,7 +52,7 @@ export default function EditModal(props: PROPS) {
       <div className="pt-5  w-full flex justify-between px-6 border-t-1 border-gray-300">
         <button
           onClick={() =>
-            updateProductSale(modal.product?._id, parseInt(priceValue))
+            updateProduct(modal.product?._id, parseInt(priceValue))
           }
           className="border-1 border-blue-500 px-6 py-1 text-base font-bold rounded-2xl text-blue-500 duration-150 hover:text-white hover:bg-blue-500"
         >

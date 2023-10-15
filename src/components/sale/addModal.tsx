@@ -15,7 +15,7 @@ type PROPS = {
   setQueue: Dispatch<SetStateAction<queueProduct[]>>;
 };
 
-const categoryLib: string[] = [
+export const categoryLib: string[] = [
   "Wszystko",
   "Laptopy",
   "Smartphone",
