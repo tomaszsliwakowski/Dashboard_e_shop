@@ -14,5 +14,11 @@ export function UPDATE_SALE(id: string) {
   return `${SERVER}/api/sale/${id}`;
 }
 export function GET_PRODUCTS(category: string) {
-  return `${SERVER}/api/product/${category}`;
+  return `${SERVER}/api/products/${category}`;
+}
+export function UPDATE_PRODUCT(id: string) {
+  return `${SERVER}/api/product/${id}`;
+}
+export function DELETE_PRODUCT(id: string) {
+  return `${SERVER}/api/product/${id}`;
 }

@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
 import dbConnect from "@/app/api/db";
-import { queueProduct } from "@/types/type";
 import saleQueue from "@/mongo/model/schema_queue";
 
 dbConnect();

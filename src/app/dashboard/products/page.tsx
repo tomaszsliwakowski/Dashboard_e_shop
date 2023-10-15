@@ -1,6 +1,6 @@
 "use client";
 import DashboardHeader from "@/components/DashboardHeader";
-import { GET_PRODUCTS } from "@/routes";
+import { DELETE_PRODUCT, GET_PRODUCTS, UPDATE_PRODUCT } from "@/routes";
 import { queueProduct } from "@/types/type";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -52,6 +52,53 @@ export default function Products() {
       }
     };
   }, [modal]);
+
+  const updateProduct = async (_id: string, value: number) => {
+    if (!_id || _id === "") return;
+    if (!value || isNaN(value) || value < 1) return;
+    await axios
+      .put(UPDATE_PRODUCT(_id), {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ value }),
+      })
+      .then((res) => {
+        const productUpdate: queueProduct = res.data.product;
+        let index = products.findIndex((it) => it._id === productUpdate._id);
+        if (index >= 0) {
+          setProducts((prev) => {
+            prev[index] = productUpdate;
+            return prev;
+          });
+        }
+        toast.success("Zaktualizowano!");
+      })
+      .catch((res) => {
+        console.log(res.message);
+        toast.error("Błąd");
+      });
+    setModal({ id: 0, active: false, type: "" });
+  };
+  const deleteProduct = async (_id: string) => {
+    if (window.confirm("Czy chcesz usunąć produkt?")) {
+      await axios
+        .delete(DELETE_PRODUCT(_id))
+        .then((res) => {
+          const product: queueProduct = res.data.product;
+          if (products.findIndex((it) => it._id === product._id) >= 0) {
+            setProducts((prev) =>
+              prev.filter((item) => item._id !== product._id)
+            );
+          }
+          toast.success("Usunięto produkt!");
+        })
+        .catch((res) => {
+          console.log(res.message);
+          toast.error("Błąd");
+        });
+    }
+  };
 
   return (
     <>
@@ -113,7 +160,10 @@ export default function Products() {
                       >
                         Edytuj
                       </button>
-                      <button className="mt-4 border-1 border-red-500 px-6 py-1 text-sm font-bold rounded-2xl text-red-500 duration-150 hover:text-white hover:bg-red-500">
+                      <button
+                        onClick={() => deleteProduct(item.id.toString())}
+                        className="mt-4 border-1 border-red-500 px-6 py-1 text-sm font-bold rounded-2xl text-red-500 duration-150 hover:text-white hover:bg-red-500"
+                      >
                         Usuń
                       </button>
                     </div>
@@ -147,7 +197,7 @@ export default function Products() {
               type="product"
               modal={modal}
               setModal={setModal}
-              updateProduct={() => {}}
+              updateProduct={updateProduct}
             />
           ) : null}
           {modal.type === "add" ? <div></div> : null}

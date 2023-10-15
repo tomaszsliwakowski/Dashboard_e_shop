@@ -12,6 +12,7 @@ export type LoginType = {
 export type GET_PRODUCTS_TYPE = {
   products: [
     {
+      _id: string;
       id: number;
       img: string;
       name: string;
@@ -24,6 +25,7 @@ export type GET_PRODUCTS_TYPE = {
   ];
 };
 export type PRODUCT = {
+  _id: string;
   id: number;
   img: string;
   name: string;

@@ -50,14 +50,25 @@ export default function EditModal(props: PROPS) {
         </div>
       </div>
       <div className="pt-5  w-full flex justify-between px-6 border-t-1 border-gray-300">
-        <button
-          onClick={() =>
-            updateProduct(modal.product?._id, parseInt(priceValue))
-          }
-          className="border-1 border-blue-500 px-6 py-1 text-base font-bold rounded-2xl text-blue-500 duration-150 hover:text-white hover:bg-blue-500"
-        >
-          Zapisz
-        </button>
+        {type === "sale" ? (
+          <button
+            onClick={() =>
+              updateProduct(modal.product?._id, parseInt(priceValue))
+            }
+            className="border-1 border-blue-500 px-6 py-1 text-base font-bold rounded-2xl text-blue-500 duration-150 hover:text-white hover:bg-blue-500"
+          >
+            Zapisz
+          </button>
+        ) : (
+          <button
+            onClick={() =>
+              updateProduct(modal.product?.id.toString(), parseInt(priceValue))
+            }
+            className="border-1 border-blue-500 px-6 py-1 text-base font-bold rounded-2xl text-blue-500 duration-150 hover:text-white hover:bg-blue-500"
+          >
+            Zapisz
+          </button>
+        )}
         <button
           onClick={() => setModal({ id: 0, active: false, type: "" })}
           className="border-1 border-red-500 px-6 py-1 text-base font-bold rounded-2xl text-red-500 duration-150 hover:text-white hover:bg-red-500"
