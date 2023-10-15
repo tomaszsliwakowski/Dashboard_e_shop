@@ -6,6 +6,7 @@ export const SALE_ROUTE = "/dashboard/sale";
 export const PRODUCTS_ROUTE = "/dashboard/products";
 export const GET_SALE = `${SERVER}/api/sale`;
 export const ADD_SALE = `${SERVER}/api/sale`;
+export const ADD_PRODUCT = `${SERVER}/api/product`;
 
 export function DELETE_SALE(id: string) {
   return `${SERVER}/api/sale/${id}`;

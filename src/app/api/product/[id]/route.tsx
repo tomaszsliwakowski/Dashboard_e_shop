@@ -51,10 +51,7 @@ export async function DELETE(request: NextRequest) {
 
     let product: PRODUCT = data.product;
     let allProducts = data.allProducts;
-    let index = allProducts[0].products.findIndex(
-      (it: PRODUCT) => it._id === product._id
-    );
-    let products = allProducts[0].products;
+    let products: PRODUCT[] = allProducts[0].products;
     products.filter((item: PRODUCT) => item._id !== product._id);
     allProducts[0].products = products;
     //await ProdAll_DB.findByIdAndUpdate(

@@ -68,7 +68,10 @@ export default function AddModal(props: PROPS) {
         setModal({ id: 0, active: false, type: "" });
         toast.success("Dodano produkt!");
       })
-      .catch((res) => console.log(res.message));
+      .catch((res) => {
+        console.log(res.message);
+        toast.error("Błąd");
+      });
     setModal({ id: 0, active: false, type: "" });
   };
 

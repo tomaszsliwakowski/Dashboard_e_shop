@@ -1,7 +1,7 @@
 "use client";
 import DashboardHeader from "@/components/DashboardHeader";
 import { DELETE_PRODUCT, GET_PRODUCTS, UPDATE_PRODUCT } from "@/routes";
-import { queueProduct } from "@/types/type";
+import { PRODUCT, queueProduct } from "@/types/type";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
@@ -11,9 +11,10 @@ import { HiOutlinePlusSm } from "react-icons/hi";
 import { categoryLib } from "@/components/sale/addModal";
 import { ModalType } from "../sale/page";
 import EditModal from "@/components/editModal";
+import AddProductModal from "@/components/products/addModal";
 
 export default function Products() {
-  const [products, setProducts] = useState<queueProduct[]>([]);
+  const [products, setProducts] = useState<PRODUCT[]>([]);
   const [category, setCategory] = useState("Wszystko");
   const [modal, setModal] = useState<ModalType>({
     id: 0,
@@ -200,7 +201,9 @@ export default function Products() {
               updateProduct={updateProduct}
             />
           ) : null}
-          {modal.type === "add" ? <div></div> : null}
+          {modal.type === "add" ? (
+            <AddProductModal setModal={setModal} setProducts={setProducts} />
+          ) : null}
         </div>
       ) : null}
     </>

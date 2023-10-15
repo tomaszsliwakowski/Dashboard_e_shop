@@ -8,7 +8,7 @@ import { HiOutlinePlusSm } from "react-icons/hi";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { DELETE_SALE, GET_SALE, UPDATE_SALE } from "@/routes";
-import { queueProduct } from "@/types/type";
+import { PRODUCT, queueProduct } from "@/types/type";
 import { ThreeDots } from "react-loader-spinner";
 import EditModal from "@/components/editModal";
 import AddModal from "@/components/sale/addModal";
@@ -17,7 +17,7 @@ import toast from "react-hot-toast";
 export type ModalType = {
   id: number;
   active: boolean;
-  product?: queueProduct;
+  product?: queueProduct | PRODUCT;
   type: string;
 };
 
