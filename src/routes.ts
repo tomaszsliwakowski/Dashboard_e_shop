@@ -1,6 +1,6 @@
 export const SERVER = "https://dashboard-e-shop.vercel.app";
 export const LOCAL_SERVER = "http://localhost:8080";
-//
+
 export const PANEL_ROUTE = "/dashboard";
 export const SALE_ROUTE = "/dashboard/sale";
 export const PRODUCTS_ROUTE = "/dashboard/products";
