@@ -23,28 +23,27 @@ export async function POST(request: NextRequest) {
   const data = await request.json();
   const newdata = JSON.parse(data.body);
   if (!newdata) return NextResponse.json({ message: "Error" });
-  console.log(newdata.productToSend);
   try {
-    let ProductsData = await ProdAll_DB.find().then(
-      (reasult: GET_PRODUCTS_TYPE[]) => {
-        const productsData = reasult[0].products.filter((item) => item);
-        return { product: productsData[0], allProducts: reasult };
-      }
-    );
+    // let ProductsData = await ProdAll_DB.find().then(
+    // (reasult: GET_PRODUCTS_TYPE[]) => {
+    //    const productsData = reasult[0].products.filter((item) => item);
+    //   return { product: productsData[0], allProducts: reasult };
+    //    }
+    // );
 
-    const lenght: number = ProductsData.product.length;
-    let productToAdd: PRODUCT = Object.assign(newdata.productToSend, {
-      opinion: Math.random() * (5 - 3) + 3,
-      id: lenght + 1,
-      _id: new ObjectId(makeid(25)),
-    });
+    // const lenght: number = ProductsData.product.length;
+    //  let productToAdd: PRODUCT = Object.assign(newdata.productToSend, {
+    //  opinion: Math.random() * (5 - 3) + 3,
+    //   id: lenght + 1,
+    //   _id: new ObjectId(makeid(25)),
+    //  });
 
-    let Products = [...ProductsData.product, productToAdd];
-    let allProducts = ProductsData.allProducts;
-
-    allProducts[0].products = Products;
-    console.log(productToAdd);
-    return NextResponse.json({ message: "Add", Products });
+    // let Products = [...ProductsData.product, productToAdd];
+    // let allProducts = ProductsData.allProducts;
+    //
+    // allProducts[0].products = Products;
+    //console.log(productToAdd);
+    return NextResponse.json({ message: "Add" });
   } catch (error) {
     return NextResponse.json({ message: "Fail" });
   }
