@@ -29,7 +29,7 @@ export default function EditModal(props: PROPS) {
           </span>
           <span className="text-lg tracking-widest bg-gray-200 w-fit px-2 py-1 rounded-lg">
             {type === "sale"
-              ? modal.product?.newPrice.toFixed(2)
+              ? modal.product?.newPrice?.toFixed(2)
               : modal.product?.price.toFixed(2)}
             zł
           </span>

@@ -27,7 +27,7 @@ export default function NextSale(props: PROPS) {
         <div className="text-center flex gap-1 justify-center max-sm:flex-col text-xl max-sm:text-base">
           <span className="text-gray-500">Cena promocyjna:</span>
           <span className="font-medium tracking-wide">
-            {product.newPrice.toFixed(2)}zł
+            {product.newPrice?.toFixed(2)}zł
           </span>
         </div>
         <div className="text-center flex gap-1 justify-center max-sm:flex-col text-xl max-sm:text-base">

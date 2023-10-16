@@ -17,7 +17,7 @@ import toast from "react-hot-toast";
 export type ModalType = {
   id: number;
   active: boolean;
-  product?: queueProduct | PRODUCT;
+  product?: queueProduct;
   type: string;
 };
 
@@ -142,7 +142,7 @@ export default function Sale() {
                     <div className="text-center flex gap-1 justify-center max-sm:flex-col text-xl max-sm:text-base">
                       <span className="text-gray-500">Cena promocyjna:</span>
                       <span className="font-medium tracking-wide">
-                        {activeSale?.newPrice.toFixed(2)}zł
+                        {activeSale?.newPrice?.toFixed(2)}zł
                       </span>
                     </div>
                     <div className="text-center flex gap-1 justify-center max-sm:flex-col text-xl max-sm:text-base">

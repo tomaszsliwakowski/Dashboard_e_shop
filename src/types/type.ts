@@ -20,7 +20,7 @@ export type GET_PRODUCTS_TYPE = {
       price: number;
       category: string;
       opinion: number;
-      spec: [string];
+      spec: string[];
     }
   ];
 };
@@ -42,10 +42,10 @@ export type queueProduct = {
   name: string;
   producer: string;
   price: number;
-  newPrice: number;
+  newPrice?: number;
   category: string;
   opinion: number;
-  spec: [string];
+  spec: string[];
 };
 
 export type chartType =
