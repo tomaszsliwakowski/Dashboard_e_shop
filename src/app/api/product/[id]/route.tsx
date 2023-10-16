@@ -48,7 +48,10 @@ export async function DELETE(request: NextRequest) {
       );
       return { product: productsData[0], allProducts: reasult };
     });
-
+    if (!data.product)
+      return NextResponse.json({
+        message: "Not found any product with this id",
+      });
     let product: PRODUCT = data.product;
     let allProducts = data.allProducts;
     let products: PRODUCT[] = allProducts[0].products;

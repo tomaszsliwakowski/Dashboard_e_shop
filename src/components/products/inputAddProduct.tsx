@@ -18,11 +18,11 @@ export function InputProductContent(props: InputPROPS) {
           onChange={(e) =>
             SetFormValues((prev) => ({
               ...prev,
-              [e.target.name]: e.target.value.split(","),
+              [e.target.name]: e.target.value.split("/"),
             }))
           }
           name={InputNameLib[id]}
-          placeholder={`${item} -- Dane oddzielaj przecinkiem.`}
+          placeholder={`${item} -- Dane oddzielaj ' / '.`}
           className=" max-h-32 text-base font-normal cursor-pointer  border-1 border-gray-300 rounded-xl px-2  py-2"
         />
       ) : (

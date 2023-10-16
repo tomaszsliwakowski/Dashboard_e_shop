@@ -10,6 +10,7 @@ import { PRODUCT } from "@/types/type";
 type PROPS = {
   setModal: Dispatch<SetStateAction<ModalType>>;
   setProducts: Dispatch<SetStateAction<PRODUCT[]>>;
+  products: PRODUCT[];
 };
 
 export const InputLib: string[] = [
@@ -35,8 +36,21 @@ export type FORM_PRODUCT_TYPE = {
   spec: Array<string>;
 };
 
+function makeId(length: number) {
+  let result: string = "";
+  const characters: string =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  const charactersLength = characters.length;
+  let counter = 0;
+  while (counter < length) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    counter += 1;
+  }
+  return result;
+}
+
 export default function AddProductModal(props: PROPS) {
-  const { setModal } = props;
+  const { setModal, products, setProducts } = props;
   const [category, setCategory] = useState("none");
   const [formValues, SetFormValues] = useState<FORM_PRODUCT_TYPE>({
     producer: "",
@@ -54,16 +68,17 @@ export default function AddProductModal(props: PROPS) {
       return;
     if (formValues.spec.length === 0) return;
 
-    const productToSend = Object.assign(
-      {
-        producer: formValues.producer,
-        name: formValues.name,
-        img: formValues.img,
-        price: parseInt(formValues.price),
-        spec: formValues.spec,
-      },
-      { category: category }
-    );
+    const productToSend: PRODUCT = {
+      _id: makeId(25),
+      id: products.length + 1,
+      producer: formValues.producer,
+      name: formValues.name,
+      img: formValues.img,
+      price: parseInt(formValues.price),
+      opinion: Math.round(Math.random() * (5 - 3) + 3),
+      spec: formValues.spec,
+      category: category,
+    };
 
     await axios
       .post(ADD_PRODUCT, {
@@ -74,7 +89,7 @@ export default function AddProductModal(props: PROPS) {
       })
       .then((res) => {
         const data = res.data;
-        console.log(data);
+        setProducts((prev) => [...prev, data.ProductToAdd]);
         toast.success("Dodano produkt!");
       })
       .catch((res) => {
@@ -83,6 +98,7 @@ export default function AddProductModal(props: PROPS) {
       });
     setModal({ id: 0, active: false, type: "" });
   };
+  console.log(products);
 
   return (
     <div className="w-full max-w-lg rounded-2xl h-auto max-h-modalfs max-sm:max-h-full bg-white px-6 pt-4 pb-6">
@@ -131,7 +147,7 @@ export default function AddProductModal(props: PROPS) {
             />
           ))}
         </form>
-        <div className="w-full flex pt-6  justify-between">
+        <div className="w-full flex pt-6  justify-between gap-1">
           <button
             onClick={() => addProduct()}
             className="border-1 border-green-500 px-6 py-1 text-base font-bold rounded-2xl text-green-500 duration-150 hover:text-white hover:bg-green-500"

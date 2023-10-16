@@ -202,7 +202,11 @@ export default function Products() {
             />
           ) : null}
           {modal.type === "add" ? (
-            <AddProductModal setModal={setModal} setProducts={setProducts} />
+            <AddProductModal
+              products={products}
+              setModal={setModal}
+              setProducts={setProducts}
+            />
           ) : null}
         </div>
       ) : null}

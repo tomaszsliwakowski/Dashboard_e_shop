@@ -33,7 +33,7 @@ export type PRODUCT = {
   price: number;
   category: string;
   opinion: number;
-  spec: [string];
+  spec: string[];
 };
 export type queueProduct = {
   id: number;
