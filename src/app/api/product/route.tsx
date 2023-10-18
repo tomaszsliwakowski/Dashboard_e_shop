@@ -20,6 +20,10 @@ export async function POST(request: NextRequest) {
     let Products = [...ProductsData.product, ProductToAdd];
     let allProducts = ProductsData.allProducts;
     allProducts[0].products = Products;
+    await ProdAll_DB.findByIdAndUpdate(
+      "64731df2bb53cb736474f421",
+      allProducts[0]
+    );
     return NextResponse.json({ message: "Add", ProductToAdd });
   } catch (error) {
     return NextResponse.json({ message: "Fail" });

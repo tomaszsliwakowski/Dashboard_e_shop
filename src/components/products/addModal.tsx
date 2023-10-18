@@ -98,7 +98,6 @@ export default function AddProductModal(props: PROPS) {
       });
     setModal({ id: 0, active: false, type: "" });
   };
-  console.log(products);
 
   return (
     <div className="w-full max-w-lg rounded-2xl h-auto max-h-modalfs max-sm:max-h-full bg-white px-6 pt-4 pb-6">
@@ -118,7 +117,7 @@ export default function AddProductModal(props: PROPS) {
                 setCategory(e.target.value)
               }
             >
-              <option className="text-base" value="none" selected>
+              <option className="text-base" value="none">
                 Wybierz kategorie
               </option>
               <option className="text-base" value="Smartphone">
@@ -147,7 +146,7 @@ export default function AddProductModal(props: PROPS) {
             />
           ))}
         </form>
-        <div className="w-full flex pt-6  justify-between gap-1">
+        <div className="w-full flex pt-6  justify-between gap-2">
           <button
             onClick={() => addProduct()}
             className="border-1 border-green-500 px-6 py-1 text-base font-bold rounded-2xl text-green-500 duration-150 hover:text-white hover:bg-green-500"
